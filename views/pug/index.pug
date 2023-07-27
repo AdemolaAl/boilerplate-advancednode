@@ -26,7 +26,11 @@ html(lang='en')
         if user 
           .third1
             .profile-container
-              .profimg(style=`background-image: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
+              if user.fileId
+                .profimg(style=`background-image: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
+              else 
+                .profimg(style=`background-image: url('/pictures/user.jpg'); background-position: center; background-size: cover;`)
+
               .dropdown-menu
                 // Add your dropdown menu content here
                 div(onclick=`window.location.href='/profile'`, style='cursor:pointer') Profile

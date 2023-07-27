@@ -25,11 +25,12 @@ html(lang='en')
           .div(onclick='handlebilling(this)') Billing
           .div(onclick='handleorder(this)') Order History
         .image-cvr
-          if user.fileId == ""
+          if user.fileId 
             .image(style=`background: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
-          
-
+          else 
+            .image
           p.header1 #{user.username}
+          
       .second
         #profile.second-display
           .cvr(style='border-top: unset;')
@@ -41,10 +42,10 @@ html(lang='en')
             .second2
               form(action="/profileupdate", method="post", enctype="multipart/form-data")
                 .top-cvr(style='display: flex; align-items: center;')
-                  if user.fileId == "bhb"
+                  if user.fileId 
                     .top(style=`background: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
-
-
+                  else
+                    .top
                   label.file-label(for='file-input')
                     | Upload a Picture
                     input(type='file' id='file-input' name='picture' onchange='displayFileName()')
@@ -80,12 +81,15 @@ html(lang='en')
                   p Confirm Password
                   input(type='text', name='')
                 button Save
+
           .cvr(style='align-items: center;')
             .first1
               .header1 Logout
               .text Logout from your current account
             .second2
-              button(style='font-size: 18px;') Logout
+              a(href="/logout") 
+                button(style='font-size: 18px;') Logout
+
           .cvr
             .first1
               .header1 Delete account
@@ -93,6 +97,7 @@ html(lang='en')
                 | No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
             .second2
               button(style='font-size: 18px; background-color: #EF4444; margin-top: 20px;') Yes, delete my account
+
         #billing.second-display
           .cvr(style='border-top: unset;')
             .first1

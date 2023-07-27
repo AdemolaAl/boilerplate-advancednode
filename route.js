@@ -20,7 +20,7 @@ module.exports = function (app, userDB, DB, productDB
 ) {
   // After connecting to MongoDB
   const bucket = new GridFSBucket(DB);
-
+  
   
 
 
@@ -242,74 +242,87 @@ module.exports = function (app, userDB, DB, productDB
     res.render('profile', {user:req.user, flash: req.flash() })
   })
 
-  app.post('/profileupdate', ensureAuthenticated, upload.single('picture'), (req, res) => {
-    userDB.findOne({ shortId: req.user.shortId }, (err, userDocument) => {
-      if (err) {
-        console.error('Error retrieving image from userDB:', err);
-        return res.sendStatus(500);
-      }
+
+  // Helper function to upload a file to GridFS and return the fileId
+  async function uploadFileToGridFS(bucket, file) {
+    return new Promise((resolve, reject) => {
+      const readableStream = fs.createReadStream(file.path);
+      const uploadStream = bucket.openUploadStream(file.originalname);
   
-      if (!userDocument) {
-        console.error('Image not found in both productDB and userDB');
-        return res.sendStatus(404); // Sending a 404 status to indicate image not found
-      }
+      readableStream.pipe(uploadStream)
+        .on('error', (err) => reject(err))
+        .on('finish', () => {
+          fs.unlinkSync(file.path);
+          resolve(uploadStream.id);
+        });
+    });
+  }
   
-      // The image is found in userDB, get the fileId from the document
-      const fileId = new ObjectId(userDocument.fileId);
-  
-      // Delete the file from GridFS using the bucket
-      bucket.delete(fileId, (err) => {
+  // Helper function to delete a file from GridFS using its fileId
+  async function deleteFileFromGridFS(bucket, fileId) {
+    return new Promise((resolve, reject) => {
+      bucket.delete(new ObjectId(fileId), (err) => {
         if (err) {
           console.error('Error deleting image from GridFS:', err);
-          return res.sendStatus(500);
+          reject(err);
+        } else {
+          console.log('Image deleted from userDB and GridFS');
+          resolve();
         }
-  
-        console.log('Image deleted from userDB and GridFS');
       });
     });
-
+  }
   
-    const picture = req.file;
+  app.post('/profileupdate', ensureAuthenticated, upload.single('picture'), async (req, res) => {
+    try {
+      const { username } = req.user;
+      const { file } = req;
   
-    // Create a readable stream from the temporary file path
-    const readableStream = fs.createReadStream(picture.path);
+      if (file) {
+        // If a new file is uploaded, delete the existing file (if any) and upload the new one
+        if (req.user.fileId) {
+          await deleteFileFromGridFS(bucket, req.user.fileId);
+        }
   
-    // Configure the GridFS upload stream
-    const uploadStream = bucket.openUploadStream(picture.originalname);
+        const fileId = await uploadFileToGridFS(bucket, file);
   
-    // Pipe the readable stream to the GridFS upload stream
-    readableStream.pipe(uploadStream)
-      .on('error', (err) => {
-        console.error('Error uploading file:', err);
-        return res.sendStatus(500);
-      })
-      .on('finish', () => {
-        console.log('File uploaded successfully');
-  
-        // Remove the temporary file
-        fs.unlinkSync(picture.path);
-  
-        // Insert the document into the collection
-        userDB.updateOne(
-          { username: req.user.username },
-          { $set: { username: req.body.username, email: req.body.email, fileId: uploadStream.id, firstname:req.body.firstname, lastname:req.body.lastname } },
-          (err, result) => {
-            if (err) {
-              console.log('Error updating profile:', err);
-              // Set an error flash message
-              req.flash('error', 'Error updating profile. Please try again.');
-              return res.redirect('/profile'); // Redirect to profile page on error
-            } else {
-              console.log('Profile updated successfully');
-              // Set a success flash message
-               // Redirect to profile page on success
-            }
+        // Update the user profile with the new fileId
+        await userDB.updateOne(
+          { username },
+          {
+            $set: {
+              username: req.body.username,
+              email: req.body.email,
+              fileId,
+              firstname: req.body.firstname,
+              lastname: req.body.lastname,
+            },
           }
         );
-      });
+      } else {
+        // If no new file is uploaded, update the user profile without changing the fileId
+        await userDB.updateOne(
+          { username },
+          {
+            $set: {
+              username: req.body.username,
+              email: req.body.email,
+              firstname: req.body.firstname,
+              lastname: req.body.lastname,
+            },
+          }
+        );
+      }
+  
       req.flash('success', 'Profile updated successfully!');
       return res.redirect('/profile');
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      req.flash('error', 'Error updating profile. Please try again.');
+      return res.redirect('/profile');
+    }
   });
+  
 
   app.post('/passwordupdate', ensureAuthenticated, (req, res) => {
     const hash = bcrypt.hashSync(req.body.newpassword, 12);
@@ -516,7 +529,7 @@ module.exports = function (app, userDB, DB, productDB
     if (!registrationData) {
       return res.redirect('/register-step1');
     }
-    res.render('register-step3', { data: registrationData });
+    res.render('register-step4', { data: registrationData });
   });
   
   app.post('/register3', (req, res) => {
@@ -528,7 +541,6 @@ module.exports = function (app, userDB, DB, productDB
         lastname: req.body.lastname,
         password: req.session.registrationData.password,
         cart: [],
-        fileId: '',
         shortId: shortId.generate()
       },
       (err, result) => {
