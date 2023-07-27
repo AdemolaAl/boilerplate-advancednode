@@ -1,0 +1,160 @@
+body {
+  font-family: "Montserrat";
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #F9FAFB;
+  position: relative;
+}
+
+.grey-text, .hero1 .texts p, .header .header-cvr .third, .header .header-cvr .second {
+  color: rgb(105, 105, 105);
+  font-size: 15px;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.bold-text, .header .header-cvr .name {
+  font-weight: bold;
+}
+
+.header {
+  padding: 10px 60px;
+  background-color: white;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+.header .header-cvr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .header-cvr .name {
+  font-size: 20px;
+}
+.header .header-cvr .second {
+  display: flex;
+}
+.header .header-cvr .third {
+  display: flex;
+}
+
+.hero1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  margin-bottom: 40px;
+}
+.hero1 .texts {
+  text-align: center;
+}
+.hero1 .texts h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.sort {
+  margin: 20px 0;
+  padding: 20px 50px 0 50px;
+  border-top: 1px solid rgb(158, 158, 158);
+  position: sticky;
+  top: 0px;
+  background-color: #F9FAFB;
+}
+.sort .sort-cvr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sort .sort-cvr .text2 {
+  display: flex;
+}
+.sort .sort-cvr .text2 p {
+  margin-left: 15px;
+}
+.sort #myDropdown {
+  padding: 0 5px;
+  font-family: "Montserrat";
+  background-color: #F9FAFB;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.products {
+  margin: 30px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 400px;
+  margin-bottom: 20px;
+}
+.product .top {
+  height: 500px;
+  border-radius: 10px;
+}
+.product .bottom .texts {
+  padding: 20px;
+  padding-left: 0;
+  font-size: 15px;
+}
+.product .bottom .texts .first, .product .bottom .texts .fourth {
+  font-weight: bold;
+}
+.product .bottom .texts .fourth {
+  color: rgb(168, 168, 168);
+}
+
+.footer {
+  background-color: white;
+  border-top: 1px solid rgb(224, 224, 224);
+  margin-top: 100px;
+  padding: 50px 30px 10px 30px;
+}
+.footer .footer1 {
+  margin-bottom: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.footer .p1 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.footer .p2 {
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.footer .email {
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 20px;
+  border: 1px solid rgb(224, 224, 224);
+  outline-color: #4F46E5;
+  border-radius: 7px;
+  margin-right: 0;
+}
+.footer .des {
+  font-size: 15px;
+  margin: 20px 0;
+}
+.footer button {
+  padding: 10px 20px;
+  font-size: large;
+  background-color: #4F46E5;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  margin-left: 0;
+  transform: unset;
+  opacity: unset;
+}/*# sourceMappingURL=product.css.map */

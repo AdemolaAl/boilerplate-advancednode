@@ -1,32 +1,58 @@
-doctype html
 html(lang='en')
   head
     meta(charset='UTF-8')
-    title Adem Register
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
-    link(rel='stylesheet', href='public/stylee.css')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    link(rel='stylesheet', href='/public/signin.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Poppins')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Register
   body
-    // partial:index.partial.html
-    #login.login
-      .head
-        h1.company Adem Register
-      
-      .form
-        form(action='/register', method='post')
-          input#username.text(type='text' placeholder='Username' , name='username' required='')
-          br
-          input#username.text(type='email' placeholder='email' , name='email' required='')
-          br
-          input.password(type='password' placeholder='type password', name='password')
-          br
-          input#do-login.btn-login(type='submit', value='Register')
-          button#do-login(onclick="window.location.href = '/signin';" ) Sign in
-          
-          #gSignInWrapper
-            
-            #customBtn.customGPlusSignIn
-              img(src='Pictures/google.jpeg' class='icon')
-              span.button(onclick="window.location.href = '/auth/google';") Google
+    if flash.error
+        .popup-cvr
+          .popup(style='background-color:red')
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.error}
+    if flash.success
+        .popup-cvr
+          .popup
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.success}
+    header
+      | ID.me
+    form(action='/register', method='post', enctype="multipart/form-data")
+      .main
         
-// partial
+        .sign
+          p Create an ID.me account
+        .new
+          p Already have  ID.me account?
+          a(href='/signin') Sign in to ID.me
+        p.email Email
+        input.email-ipt(type='email', placeholder='Enter your email address', name='email')
+        p.email Username
+        input.email-ipt(type='text', placeholder='Username', name='username')
+        p.email First Name
+        input.email-ipt(type='text', placeholder='First Name', name='FirstName')
+        p.email Last Name
+        input.email-ipt(type='text', placeholder='Last Name', name='LastName')
+        p.email Confirm Password
+        input.email-ipt(type='password', placeholder='Enter password', name='password', onkeyup="buttonDown(this)")
+        p#pass(style='margin-left:8%')
 
+        div.label-cvr
+          label.file-label(for='file-input')
+            | Upload a Picture
+            input(type='file' id='file-input' name='picture' onchange='displayFileName()')
+            span#file-name
+
+        input.sgn-btn(type='submit', value='Register')
+        .forg
+          p OR
+        button.view-btn View more options
+
+    .last
+      div What is ID.me?
+      div Terms and services
+      div(style='border-right: none;') Privacy Policy
+    script(src="/public/signin.js") 
+      

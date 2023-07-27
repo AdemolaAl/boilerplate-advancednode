@@ -1,0 +1,105 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
+    link(rel='stylesheet', href='/public/shoppingcart.css')
+     
+  body
+    .header
+      .header-cvr
+        .name Revolution
+        .second
+          p Men
+          ul Women
+          ul Plain
+        .third
+          ul Search
+          ul Help
+    .main
+      p.header2(style='font-size: 30px; margin-top: 0;') Shopping Cart
+      .flex
+        .products
+            if user.cart
+                each item in user.cart
+                    .product(onclick=`window.location.href='/productpage/${item.shortId}'`)
+                        img(src=`/images/${item.shortId}`)
+                        .right
+                            .top
+                                p.header1.name1 #{`/name/${item.shortId}`}
+                                p #{item.color}  |  #{item.size}
+                                p.price #{`/price/${item.shortId}`}
+                            .bottom In stock
+            else 
+                p No Product Found
+        .order-summary
+          p.header2 Order summary
+          .div
+            p Subtotal
+            p.header1 $99.00
+          .div
+            p Shipping estimate
+            p.header1 $5.00
+          .div
+            p Tax estimate
+            p.header1 $8.32
+          .div(style='border-bottom: unset;')
+            p.header2 Order total
+            p.header1 $112.32
+          button checkout
+    .favourite
+      .header2 Customers also purchased
+        .products
+            each product in products
+                .product(onclick=`window.location.href='/productpage/${product.shortId}'` style='cursor:pointer')
+                    .top(style=`\
+                    background: url('/images/${product.shortId}');\
+                    background-position:center;\
+                    background-size: contain;`)
+                    .bottom
+                        .texts
+                            .first #{product.name}
+                            .fourth #{product.price}
+        
+    .footer
+      .footer1
+        .span1
+          .logo(style='margin-left: 0; margin-bottom: 20px;')
+            h1 Revolution
+          .p1 Subscribe to our newsletter
+          .p2(style='margin-bottom: 10px;') Follow our newsletter to stay updated about us.
+          form(action='/subscribe', method='POST')
+            input.email(type='email', name='email', placeholder='Enter your email', required='')
+            button(type='submit') Subscribe
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+      hr(style='border:1px solid rgb(224, 224, 224)')
+      .des Copyright &copy; 2021 Revolution, Inc.
+    script(src="/public/shp.js")      

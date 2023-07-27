@@ -1,0 +1,23 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Register
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
+    link(rel='stylesheet', href='public/register1.css')
+  body
+    .body
+      p.header2(style='padding-top: 80px;') Register to Revolution
+      form(action="/register3", method="post") 
+        .main
+            .input-main
+                p First Name
+                input(type='text', name='firstname')
+            .input-main
+                p Last Name
+                input(type='text', name='lastname')
+            .input-main
+                p Username
+                input(type='text', name='username')
+
+            button(style='width: 100%;') Continue

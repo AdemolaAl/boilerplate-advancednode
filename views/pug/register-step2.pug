@@ -1,0 +1,33 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Register
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
+    link(rel='stylesheet', href='public/register1.css')
+  body
+    if flash.success
+        .popup-cvr
+            .popup
+                div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+                p #{flash.success}
+    else if flash.error
+        .popup-cvr
+            .popup(style='background-color:red')
+                div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+                p #{flash.error}
+    .body
+      p.header2(style='padding-top: 80px;') Register to Revolution
+      form(action="/register2", method="post") 
+        .main
+            p#pass
+            p#pass1(style='color:red')
+            .input-main
+                p Password
+                input#password(type='password', name='password', onkeyup="buttonDown(this)")
+            .input-main
+                p Confirm Password
+                input#confirmpassword(type='password', onkeyup="buttonDown(this)")
+            
+            button#btn(style='width: 100%;', disabled=true) Continue
+    script(src="/public/signin.js") 

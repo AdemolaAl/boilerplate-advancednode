@@ -1,7 +1,7 @@
 // Do not change this file
 const dotenv = require("dotenv");
 dotenv.config({ path: "sample.env" });
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 
 async function main(callback) {
     const URI = process.env.MONGO_URI; // Declare MONGO_URI in your .env file
@@ -20,5 +20,8 @@ async function main(callback) {
         throw new Error('Unable to Connect to Database')
     }
 }
+// After connecting to MongoDB
+
+
 
 module.exports = main;

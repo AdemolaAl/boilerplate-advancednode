@@ -1,128 +1,215 @@
-body{
-    font: 1em sans-serif;
-    padding: 0;
-    margin: 0;
-    background-color: whitesmoke;
-}
-.top{
-    position: fixed;
-    display: inline-block;
-    width: 100%;
-    font-size: small;
-    padding: 0;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: white;
-  
-    z-index: 10;
-}
-.top div{
-    background-color:rgb(0, 140, 255);
-    height: 40px;
-    width: 80px;
-    display: inline-block;
-  float:left;
-    color: white;
-    position:relative;
-  
-  margin-left:100px;
-} 
-
-.top div p{
-  position:absolute;
-  font-size: 22px; font-weight: bold; 
-  bottom:-15px;
-  left:10px;
- 
-  
+body {
+  font-family: "Montserrat";
+  padding: 0;
+  margin: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  overflow-x: hidden;
 }
 
-a{
-    text-decoration: none;
-    color: rgb(90, 91, 92);
-    margin: 10px 10px;
-  font-size:15px;
-    
-    
-}
-a:active {
-    color:rgb(44, 44, 44);
-    font-weight: bolder;
-}
-a:hover{
-    color: green;
+.popup-cvr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
 }
 
-
-.b {
-    border: 1px solid  rgb(0, 140, 255);
-    background-color: rgb(0, 140, 255);
-    left: 170px;
-    color: white;
-    padding: 10px;
-    border-radius: 30px;
-    width: 90px;
+.popup {
+  background-color: #198754;
+  padding: 30px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: -130px;
+  z-index: 10;
+  transition: top 1s;
+}
+.popup .close-popup-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
 }
 
-.second{
-    position: relative;
-    height: 250px;
-    width: 100%;
-    background-color: rgb(0, 162, 255);
-    color: rgb(8, 4, 63);
+.body {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  overflow-x: hidden;
+  min-width: 100%;
 }
 
-.hi {
-    position: absolute;
-    left: 180px;
-    top: 80px;
-    font-size: 40px;
-    font-weight: bold;
+.text {
+  line-height: 25px;
+  font-size: 15px;
 }
 
-.thanks{
-    position: absolute;
-    left: 180px;
-    top: 160px;
-    font-weight: 600;
+.header1 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
-#hand{
-    position: absolute;
-    left: 70px;
-    top: 115px;
-    font-size: 5em;
+.header2 {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.second button{
-    position: absolute;
-    right: 100px;
-    top: 120px;
-    background-color:  rgb(8, 4, 63);
-    color: white;
-    border: 1px solid  rgb(8, 4, 63);
-    border-radius: 10px;
-    width: 140px;
-    height: 60px;
-    font-size: 15px;
-    
+.bold-text, .first .name {
+  font-weight: bold;
 }
 
-.third{
-    color:  rgb(8, 4, 63);
-    position: relative;
-    height: 70px;
-    width: 100%;
-    background-color: white;
+.input-main {
+  width: -moz-max-content;
+  width: max-content;
+  width: 100%;
+  margin: 30px 0;
 }
-.third #env{
-    position: absolute;
-    left: 110px;
-    top: 23px;
-    font-size: 1.5em;
+.input-main p {
+  margin: 5px 0;
 }
-.third .email{
-    position: absolute;
-    left: 150px;
-    top: 10px;
+.input-main input, .input-main textarea {
+  width: 100%;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+  padding: 8px;
+  outline-color: #4F46E5;
 }
+
+button, .button {
+  cursor: pointer;
+  padding: 7px 8px;
+  border: none;
+  border-radius: 7px;
+  background-color: #4F46E5;
+  color: white;
+  font-size: 15px;
+}
+
+.first {
+  padding: 30px 20px;
+  width: 25%;
+  height: 100vh;
+  border-right: 1px solid rgb(224, 224, 224);
+  position: relative;
+}
+.first .name {
+  font-size: 20px;
+}
+.first .divs {
+  margin-top: 50px;
+}
+.first .div {
+  padding: 10px 10px;
+  width: 90%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.first .div:hover {
+  background-color: rgb(224, 224, 224);
+}
+.first .image-cvr {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 80px;
+  margin-left: 20px;
+}
+.first .image-cvr .image {
+  background: url("pictures/IMG_20230214_135732_1.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  margin-right: 20px;
+}
+
+.second {
+  width: 75%;
+  overflow-y: scroll;
+}
+.second #profile, .second #billing {
+  display: none;
+}
+.second #profile .cvr, .second #billing .cvr {
+  padding: 60px;
+  border-top: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid rgb(224, 224, 224);
+  display: flex;
+}
+.second #profile .cvr .first1, .second #billing .cvr .first1 {
+  width: 40%;
+}
+.second #profile .cvr .second2, .second #billing .cvr .second2 {
+  width: 60%;
+  margin-left: 50px;
+}
+.second #profile .cvr .second2 .top, .second #billing .cvr .second2 .top {
+  width: 100px;
+  height: 120px;
+  margin: 20px 0;
+  border-radius: 5px;
+  background-image: url("pictures/IMG_20230214_135732_1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.second #profile .cvr .second2 .two-input, .second #billing .cvr .second2 .two-input {
+  display: flex;
+  justify-content: space-between;
+}
+.second #profile .cvr .second2 .two-input .input-main, .second #billing .cvr .second2 .two-input .input-main {
+  width: 48%;
+  margin: 15px 0;
+}
+.second #order {
+  display: none;
+}
+.second #order .order-cvr, .second #order .product {
+  padding: 0 30px;
+  background-color: rgb(224, 224, 224);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+.second #order .order-cvr ul, .second #order .product ul {
+  display: inline-block;
+  width: 150px;
+  max-width: 150px;
+}
+.second #order .product {
+  background-color: unset;
+}
+
+/* Hide the original file input */
+input[type=file] {
+  display: none;
+}
+
+/* Style the custom file input label */
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Change label appearance when hovering over it */
+.file-label:hover {
+  background-color: #2980b9;
+}
+
+/* Change label appearance when file is selected */
+input[type=file]:focus + .file-label {
+  outline: 2px solid #3498db;
+  outline-offset: -2px;
+}
+
+/* Style the selected filename (optional) */
+input[type=file]::file-selector-button {
+  display: none;
+}/*# sourceMappingURL=profile.css.map */

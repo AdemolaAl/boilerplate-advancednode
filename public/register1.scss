@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat';
+    background-color: #f9fafb;
+}
+a{
+    text-decoration: none;
+    color: #4F46E5;
+}
+
+.text{
+    line-height: 25px;
+    font-size: 15px;
+}
+.header1{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.header2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.bold-text{
+    font-weight: bold;
+}
+
+.input-main{
+    width: max-content;
+    width: 100%;
+    margin: 30px 0;
+    p{
+        margin: 5px 0;
+    }
+    input, textarea{
+        width: 100%;
+        border: 1px solid #c0c0c0;
+        border-radius: 5px;
+        padding: 8px;
+        outline-color: #4F46E5;
+    }
+    
+}
+button{
+    font-family: 'Montserrat';
+    cursor: pointer;
+    padding: 7px 8px;
+    border: none;
+    border-radius: 7px;
+    background-color: #4F46E5;
+    color: white;
+    font-size: 15px;
+}
+button:disabled {
+    background-color: #CCCCCC; /* Light gray background color */
+    color: #999999; /* Dark gray text color */
+    cursor: not-allowed; /* Cursor style when disabled */
+  }
+.body{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+.main{
+    width: 80%;
+    background-color: white;
+    padding: 30px 50px;
+    text-align: left;
+    
+}
+
+.popup-cvr{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+.popup {
+    background-color: #198754;
+    padding: 30px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -130px;
+    z-index: 10;
+    transition:top 1s;
+    
+    
+    .close-popup-btn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+}

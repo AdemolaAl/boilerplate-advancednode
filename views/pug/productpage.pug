@@ -1,0 +1,133 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{item.name}
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
+    link(rel='stylesheet', href='/public/productpage.css')
+  body
+    .header
+      .header-cvr
+        .name Revolution
+        .second
+          p Men
+          ul Women
+          ul Plain
+        .third
+          ul Search
+          ul Help
+    .home1
+        .img(style=`background: url('/images/${item.shortId}'); background-size: cover; background-position: center;"`)
+        .second
+          .top
+            p #{item.name}
+            p #{item.price}
+          .review
+            | #{item.rating}
+            .star-rating
+              span.star
+              span.star
+              span.star
+              span.star
+              span.star
+          form(action=`/addtocart/${item.shortId}`, method='post')    
+            .color
+              p.header1 Color
+              .color-cvr(onclick='handleColor(this)')
+                .color-cir(style='background-color: black')
+              .color-cvr(onclick='handleColor(this)')
+                .color-cir(style='background-color: Silver')
+            .sizez
+              p(style='font-size: 15px; font-weight: bold;') Size
+              .size-brick-cvr
+                .size-brick(onclick='handleprofile(this)') xxs
+                .size-brick(onclick='handleprofile(this)') xs
+                .size-brick(onclick='handleprofile(this)') s
+                .size-brick(onclick='handleprofile(this)') M
+                .size-brick(onclick='handleprofile(this)') L
+                input#colorform(type="text", name='color')
+                input#textform(type="text", name ="size")
+
+            input.sgn-btn(type='submit', value='Add to cart')
+
+          .descriptionart
+            p(style='font-size: 15px; font-weight: bold;') Description
+            p.text
+              | !{item.description}
+
+    .recent-reviews
+      p.header2(style='margin:100px 0 30px 0;') Recent reviews
+      if item.reviews
+        each rev in item.reviews
+          .review
+            .first
+              .header1 #{rev.name}
+              .text #{rev.date}
+            .star-rating
+              span.star
+              span.star
+              span.star
+              span.star
+              span.star
+            .third
+              .header1 #{rev.header}
+              .text !{rev.text}
+      else
+        p No reviews available
+
+    .favourite
+      .header2 Customers also purchased
+      .products
+        each item in username
+          .product(onclick=`window.location.href='/productpage/${item.shortId}'` style='cursor:pointer')
+            .top(style=`\
+            background: url('/images/${item.shortId}');\
+            background-position:center;\
+            background-size: contain;`)
+            .bottom
+              .texts
+                .first #{item.name}
+                .fourth #{item.price}
+     
+
+    .footer
+      .footer1
+        .span1
+          .logo(style='margin-left: 0; margin-bottom: 20px;')
+            h1 Revolution
+          .p1 Subscribe to our newsletter
+          .p2(style='margin-bottom: 10px;') Follow our newsletter to stay updated about us.
+          form(action='/subscribe', method='POST')
+            input.email(type='email', name='email', placeholder='Enter your email', required='')
+            button(type='submit') Subscribe
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+      hr(style='border:1px solid rgb(224, 224, 224)')
+      .des Copyright &copy; 2021 Revolution, Inc.
+    script(src='/public/productpage.js')

@@ -1,0 +1,220 @@
+body{
+    font-family: 'Montserrat';
+    padding: 0;
+    margin: 0;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.popup-cvr{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+.popup {
+    background-color: #198754;
+    padding: 30px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -130px;
+    z-index: 10;
+    transition:top 1s;
+    
+    
+    .close-popup-btn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+.body{
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    overflow-x: hidden;
+    min-width: 100%;
+}
+
+.text{
+    line-height: 25px;
+    font-size: 15px;
+}
+.header1{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.header2{
+    font-size: 20px;
+    font-weight: bold;
+}
+.bold-text{
+    font-weight: bold;
+}
+
+.input-main{
+    width: max-content;
+    width: 100%;
+    margin: 30px 0;
+    p{margin: 5px 0;}
+    input, textarea{
+        width: 100%;
+        border: 1px solid #c0c0c0;
+        border-radius: 5px;
+        padding: 8px;
+        outline-color: #4F46E5;
+    }
+    
+}
+button, .button{
+    cursor: pointer;
+    padding: 7px 8px;
+    border: none;
+    border-radius: 7px;
+    background-color: #4F46E5;
+    color: white;
+    font-size: 15px;
+}
+
+.first{
+    padding: 30px 20px;
+    width: 25%;
+    height: 100vh;
+    border-right: 1px solid rgb(224, 224, 224);
+    position: relative;
+    
+    .name{
+        @extend .bold-text;
+        font-size: 20px;
+    }
+    .divs{
+        margin-top: 50px;
+    }
+    .div{
+        padding: 10px 10px;
+        width: 90%;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+    .div:hover{
+        background-color: rgb(224, 224, 224);
+    }
+
+    .image-cvr{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 80px;
+        margin-left: 20px;  
+        .image{
+            background: url('pictures/IMG_20230214_135732_1.jpg');
+            background-position: center;
+            background-size: cover;
+            height: 40px;
+            width: 40px;
+            border-radius: 40px;
+            margin-right: 20px;
+        }
+    }
+}
+
+.second{
+    width: 75%;
+    overflow-y: scroll;
+    #profile , #billing{
+        display: none;
+        .cvr{
+            padding: 60px;
+            border-top: 1px solid rgb(224, 224, 224);
+            border-bottom: 1px solid rgb(224, 224, 224);
+
+            display: flex;
+
+            .first1{width: 40%;}
+
+            .second2{
+                width: 60%;
+                margin-left: 50px;
+                .top{
+                    width: 100px;
+                    height: 120px;
+                    margin: 20px 0;
+                    border-radius: 5px;
+                    background-image: url('pictures/IMG_20230214_135732_1.jpg');
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                .two-input{
+                    display: flex;
+                    justify-content: space-between;
+                    .input-main{
+                        width: 48%;
+                        margin: 15px 0;
+                    }
+                }
+
+            
+            }
+        }
+    }
+
+    #order{
+        display: none;
+        .order-cvr, .product{
+            padding: 0 30px;
+            background-color: rgb(224, 224, 224);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgb(224, 224, 224);
+
+            ul{
+                display: inline-block;
+                width: 150px;
+                max-width: 150px;
+            }
+        }
+        .product{
+            background-color: unset;
+        }
+    }  
+}
+
+
+/* Hide the original file input */
+input[type="file"] {
+display: none;
+}
+  
+/* Style the custom file input label */
+.file-label {
+display: inline-block;
+padding: 10px 20px;
+background-color: #3498db;
+color: #fff;
+cursor: pointer;
+border-radius: 5px;
+}
+
+/* Change label appearance when hovering over it */
+.file-label:hover {
+background-color: #2980b9;
+}
+
+/* Change label appearance when file is selected */
+input[type="file"]:focus + .file-label {
+outline: 2px solid #3498db;
+outline-offset: -2px;
+}
+
+/* Style the selected filename (optional) */
+input[type="file"]::file-selector-button {
+display: none;
+}

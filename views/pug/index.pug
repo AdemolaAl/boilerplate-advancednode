@@ -1,71 +1,153 @@
-doctype html
-head
-  link(rel='stylesheet' href='public/style.css')
-.top
-  div
-    p Adem
-  a(href='' style='float: left; margin-left:20px; margin-right: 20px;') Home
-  a(href='#thirdpage' style='float: left; margin-left:20px; margin-right: 20px;') About
-  a(href='#home' style='float: left; margin-left:20px; margin-right: 20px;') Packages
-  a(href='#secondpage' style='float: left; margin-left:20px; margin-right: 20px;') Join
-  a(href='/signin' style='float: right; margin-left:20px; margin-right: 50px;') Sign in
-  button.b(style='float: right; width:110px; ')
-    a(href='/register' style='color:white;') Sign up
-#home.firstpage
-  
-  h1(style='font-size: 50px; ')
-    | Gorgeous Websites
-    br
-    |  designed for you.
-  p#c(style='top:300px')
-    | With Us anyone can create their dream 
-    br
-    |website designs, web graphics and more that
-    br
-    | your business, organization or portfolio needs.
-  button#a
-    a(href='/register' style='color:white;') Register
-  button.b 
-    a(href='/signin' style='color:white;') Sign in
-  img(src='Pictures/image2.jpg' style='position:absolute;width: 540px;;height: 520px; top:80px;\
-        left: 620px;')
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Revolution
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
+    link(rel='stylesheet', href='public/style.css')
+  body
+    if flash.error
+        .popup-cvr
+          .popup(style='background-color:#E9D502')
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.error}
+    if flash.success
+        .popup-cvr
+          .popup
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.success}
+    .header-dark
+      .header-cvr
+        .name Revolution
+        .second
+          ul(onclick=`window.location.href='/product/Men'`) Men
+          ul(onclick=`window.location.href='/product/women'`) Women
+          ul Plain
+        if user 
+          .third1
+            .profile-container
+              .profimg(style=`background-image: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
+              .dropdown-menu
+                // Add your dropdown menu content here
+                div(onclick=`window.location.href='/profile'`, style='cursor:pointer') Profile
+                div Billing
+                div Order History
+                div Pending Order
+                // For example, you can add links or other elements
+        else
+          .third
+            ul Search
+            ul Help
+    
+    .home(style="background: url('pictures/alexander-andrews-BX4Q0gojWAs-unsplash.jpg'); background-size: cover; background-position: center;")
+      .color-cover
+        .texts
+          h1 New arrivals are here
+          p
+            | The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they&apos;re still in stock.
+          button Shop New Arrivals
 
-#secondpage.secondpage
-  p.a Go wherever your imagination takes you.
-  .grid
-    .first
-      img(src='./Pictures/mikaela-shannon-clN6N30q3sw-unsplash.jpg')
-      p
-        b Turn your imagination into reality
-        br
-        | With Adem you can create the website of your dreams from as low as $10.We help the community join the web by creating simple poftfolio for people and community.
-    .second
-      img(src="Pictures/pex.jpg")
-      p
-        b Create the unexpected
-        br
-        | Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam laborum magnam repellat quaerat illum placeat aperiam dolores voluptas earum expedita adipisci odio nostrum dolor esse id, consequatur architecto? Odio, tempora.
-    .third
-      img(src='Pictures/pexels-meta-dizayn-1058100.jpg')
-      p
-        b All kind of fun at your fingertips.
-        br
-        | Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam laborum magnam repellat quaerat illum placeat aperiam dolores voluptas earum expedita adipisci odio nostrum dolor esse id, consequatur architecto? Odio, tempora.
-#thirdpage.firstpage(style='background-color: #e8f7fc')
-  h1(style='color: rgb(56, 56, 56);')
-    | Design incredible online
-    br
-    | store for your business.
-  p#c(style='color: rgb(56, 56, 56); width: 400px;')
-    | Adem have a specific plan for small business
-    | with low budget. Adem help's you create a wonderful online store to sell your product and gain more traffic to your business.
-    | Try it out today
-  button.b(style='left: 100px; top: 420px;') Free trial
-  img(src='Pictures/image1.jpg' style='position:absolute;width: 640px;;height: 360px;; top: 130px;\
-  left: 660px;')
-
-.login.center
-        a(href='/auth/github').text Login with Github!
-
-.login.center
-        a(href='/auth/google').text Login with Google!
+    .category
+      .shop
+        .p1 Shop by Category
+        .p2 Browse all Categories
+      .categories
+        .cat1(style="background: url('pictures/bottle.jpg');\
+        background-size: cover;\
+        background-position: center;")
+          .color-over
+            .text New Arrivals
+        .cat1(style="background: url('pictures/watches.jpg');\
+        background-size: cover;\
+        background-position: center;")
+          .color-over
+            .text Productivity
+        .cat1(style="background: url('pictures/camera.jpg');\
+        background-size: cover;\
+        background-position: center;")
+          .color-over
+            .text Workspace
+        .cat1(style="background: url('pictures/bag.jpg');\
+        background-size: cover;\
+        background-position: center;")
+          .color-over
+            .text Assesories
+        .cat1(style="background: url('pictures/products.jpg');\
+        background-size: cover;\
+        background-position: center;")
+          .color-over
+            .text Sales
+    
+    .home1(style="background: url('pictures/laptop.jpg');background-size: cover;  background-position: center;")
+      .color-cover
+        .texts
+          h1 Level up your desk
+          p
+            | Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.
+          button Shop Workspace
+    
+    .favourite
+      .shop
+        .p1 Our Favorites
+        .p2 Browse all Favorites
+      .products
+        each item in HomePageProductsSliced
+          .product(onclick=`window.location.href='/productpage/${item.shortId}'`)
+            .top(style=`\
+            background: url('/images/${item.shortId}');\
+            background-position:center;\
+            background-size: contain;`)
+            .bottom
+              .texts
+                .first #{item.name}
+                .fourth #{item.price}
+    
+    .home1(style="background: url('pictures/watches1.jpg');  background-size: cover; background-position: center;")
+      .color-cover
+        .texts
+          h1 Simple productivity
+          p
+            | Endless tasks, limited hours, a single piece of paper. Not really a haiku, but we&apos;re doing our best here. No kanban boards, burndown charts, or tangled flowcharts with our Focus system. Just the undeniable urge to fill empty circles.
+          button Shop Focus
+    
+    .footer
+      .footer1
+        .span1
+          .logo(style='margin-left: 0; margin-bottom: 20px;')
+            h1 Revolution
+          .p1 Subscribe to our newsletter
+          .p2(style='margin-bottom: 10px;') Follow our newsletter to stay updated about us.
+          form(action='/subscribe', method='POST')
+            input.email(type='email', name='email', placeholder='Enter your email', required='')
+            button(type='submit') Subscribe
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+        .span
+          p.p1 Quick Links
+          .p2 Home
+          .p2 About Us
+          .p2 Features
+          .p2 Pricing
+          .p2 Contact Us
+      hr(style='border:1px solid rgb(44, 45, 54);')
+      .des Copyright &copy; 2021 Revolution, Inc.
+    script(src='public/index.js')

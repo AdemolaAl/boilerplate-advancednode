@@ -1,0 +1,187 @@
+body{
+    margin: 0;
+    background-color: whitesmoke;
+    padding: 0;
+    font: 1em sans-serif;
+    color: #172f55;
+    font-family: Poppins;
+}
+
+.popup-cvr{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+.popup {
+    background-color: #198754;
+    padding: 30px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -130px;
+    z-index: 10;
+    transition:top 1s;
+    
+    
+    .close-popup-btn {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+
+
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    width: 480px;
+    background-color: white;
+    margin: auto;
+    box-shadow: 1px 1px 15px 3px rgb(216, 216, 216);
+    border-radius: 10px;
+
+    .sign{
+        padding: 8px;
+        text-align: center;
+        color: #172f55;
+        font-size: 27px;
+        font-weight: bold
+    }
+
+    .new{
+        padding: 10px;
+        text-align: center;
+        color: #172f55;
+        font-size: 18px;
+        padding-bottom: 30px;
+        line-height: 5px;
+        border-top:1px solid rgb(230, 230, 230);
+        border-bottom:1px solid rgb(230, 230, 230);
+        background-color: #eff8f2;
+    }
+
+    
+    .email{
+        font-size: 14px;
+        font-weight: bold;
+        margin: 25px 0 5px 8%;
+    }
+    .email-ipt{
+        margin: 0 8% 0 8%;
+        height: 50px;
+        padding: 5px;
+        padding-left: 20px;
+        width: 80%;
+        font-size: 18px;
+        border: 2px solid rgb(201, 201, 201);
+        border-radius: 5px;
+    }
+
+    .sgn-btn{
+        margin-top: 30px;
+        font-size: 18px;
+        width: 85%;
+        margin-left: 8%;
+        height: 55px;
+        background-color: #386ab9;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        margin-bottom: 30px;
+
+    }
+
+    .forg{
+        text-align: center;
+    }
+    .view-btn{
+        @extend .sgn-btn;
+        background-color: white;
+        color: #386ab9;    
+        border: 1px solid #386ab9;
+    }
+    
+}
+
+.last{
+    text-align: center;
+    margin: 20px 0;
+    div{
+        display: inline-block;
+        border-right:1px solid black;
+        
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+
+.check-cvr{
+    display: flex;
+    justify-content: space-around;
+    margin: 5px 8% 0 8%;
+
+    .check{
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width:480px){
+    .main{
+        width: 100%;
+        overflow: hidden;
+    }
+   
+}
+
+
+.label-cvr{
+    display: flex;
+    margin: 20px 0;
+    justify-content: center;
+    width: 100%;
+}
+/* Hide the original file input */
+input[type="file"] {
+display: none;
+}
+  
+/* Style the custom file input label */
+.file-label {
+display: inline-block;
+padding: 10px 20px;
+background-color: #3498db;
+color: #fff;
+cursor: pointer;
+border-radius: 5px;
+}
+
+/* Change label appearance when hovering over it */
+.file-label:hover {
+background-color: #2980b9;
+}
+
+/* Change label appearance when file is selected */
+input[type="file"]:focus + .file-label {
+outline: 2px solid #3498db;
+outline-offset: -2px;
+}
+
+/* Style the selected filename (optional) */
+input[type="file"]::file-selector-button {
+display: none;
+}

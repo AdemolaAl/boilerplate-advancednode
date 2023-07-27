@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    link(rel='stylesheet', href='/public/signin.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Poppins')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Sign In
+  body
+    if flash.error
+        .popup-cvr
+          .popup(style='background-color:red')
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.error}
+    if flash.success
+        .popup-cvr
+          .popup
+            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+            p #{flash.success}
+    header
+      | ID.me
+
+    form(action='/login', method='post')
+      .main
+        .sign
+          p Sign in  to ID.me
+        .new
+          p New to ID.me?
+          a(href='/register') Create an ID.me account
+        p.email Email
+        input.email-ipt(type='name', placeholder='Enter your email address', name='email')
+        p.email Password
+        input.email-ipt(type='password', placeholder='Enter password', name='password')
+        input.sgn-btn(type='submit', value='Sign In')
+        br
+        .forg
+          a(href='') Forget password
+          p OR
+        button.view-btn View more options
+    .last
+      div What is ID.me?
+      div Terms and services
+      div(style='border-right: none;') Privacy Policy
+
+    script(src="/public/signin.js") 

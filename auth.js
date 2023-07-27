@@ -9,27 +9,32 @@ const GitHubStrategy = require('passport-github').Strategy;
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 
-module.exports = function(app, Cluster) {
+module.exports = function(app, userDB) {
   passport.serializeUser((user, done) => {
     done(null, user._id);
   });
   passport.deserializeUser((id, done) => {
-    Cluster.findOne({ _id: new ObjectID(id) }, (err, doc) => {
+    userDB.findOne({ _id: new ObjectID(id) }, (err, doc) => {
       if (err) return console.error(err);
       done(null, doc);
     });
   });
-  passport.use(new LocalStrategy((username, password, done) => {
-    Cluster.findOne({ username: username }, (err, user) => {
-      console.log(`User ${username} attempted to log in.`);
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
+  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    userDB.findOne({ email: email }, (err, user) => {
+      console.log(`User ${email} attempted to log in.`);
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: 'Login failed. User not found.' });
+      }
       if (!bcrypt.compareSync(password, user.password)) {
-        return done(null, false);
+        return done(null, false, { message: 'Login failed. Incorrect password.' });
       }
       return done(null, user);
     });
   }));
+  
 
   passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
@@ -39,7 +44,7 @@ module.exports = function(app, Cluster) {
     function(accessToken, refreshToken, profile, cb) {
       console.log(profile);
       //Database logic here with callback containing our user object
-      Cluster.findOneAndUpdate(
+      userDB.findOneAndUpdate(
         { id: profile.id },
         {
           $setOnInsert: {
@@ -78,7 +83,7 @@ module.exports = function(app, Cluster) {
     function(request, accessToken, refreshToken, profile, cb) {
       console.log(profile);
       //Database logic here with callback containing our user object
-      Cluster.findOneAndUpdate(
+      userDB.findOneAndUpdate(
         { id: profile.id },
         {
           $setOnInsert: {
