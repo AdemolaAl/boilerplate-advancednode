@@ -1,0 +1,32 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Adem Register
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+    link(rel='stylesheet', href='public/stylee.css')
+  body
+    // partial:index.partial.html
+    #login.login
+      .head
+        h1.company Adem Register
+      
+      .form
+        form(action='/register', method='post')
+          input#username.text(type='text' placeholder='Username' , name='username' required='')
+          br
+          input#username.text(type='email' placeholder='email' , name='email' required='')
+          br
+          input.password(type='password' placeholder='type password', name='password')
+          br
+          input#do-login.btn-login(type='submit', value='Register')
+          button#do-login(onclick="window.location.href = '/signin';" ) Sign in
+          
+          #gSignInWrapper
+            
+            #customBtn.customGPlusSignIn
+              img(src='Pictures/google.jpeg' class='icon')
+              span.button(onclick="window.location.href = '/auth/google';") Google
+        
+// partial
+

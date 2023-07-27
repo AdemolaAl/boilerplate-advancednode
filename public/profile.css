@@ -1,0 +1,128 @@
+body{
+    font: 1em sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: whitesmoke;
+}
+.top{
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    font-size: small;
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+  
+    z-index: 10;
+}
+.top div{
+    background-color:rgb(0, 140, 255);
+    height: 40px;
+    width: 80px;
+    display: inline-block;
+  float:left;
+    color: white;
+    position:relative;
+  
+  margin-left:100px;
+} 
+
+.top div p{
+  position:absolute;
+  font-size: 22px; font-weight: bold; 
+  bottom:-15px;
+  left:10px;
+ 
+  
+}
+
+a{
+    text-decoration: none;
+    color: rgb(90, 91, 92);
+    margin: 10px 10px;
+  font-size:15px;
+    
+    
+}
+a:active {
+    color:rgb(44, 44, 44);
+    font-weight: bolder;
+}
+a:hover{
+    color: green;
+}
+
+
+.b {
+    border: 1px solid  rgb(0, 140, 255);
+    background-color: rgb(0, 140, 255);
+    left: 170px;
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+    width: 90px;
+}
+
+.second{
+    position: relative;
+    height: 250px;
+    width: 100%;
+    background-color: rgb(0, 162, 255);
+    color: rgb(8, 4, 63);
+}
+
+.hi {
+    position: absolute;
+    left: 180px;
+    top: 80px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.thanks{
+    position: absolute;
+    left: 180px;
+    top: 160px;
+    font-weight: 600;
+}
+
+#hand{
+    position: absolute;
+    left: 70px;
+    top: 115px;
+    font-size: 5em;
+}
+
+.second button{
+    position: absolute;
+    right: 100px;
+    top: 120px;
+    background-color:  rgb(8, 4, 63);
+    color: white;
+    border: 1px solid  rgb(8, 4, 63);
+    border-radius: 10px;
+    width: 140px;
+    height: 60px;
+    font-size: 15px;
+    
+}
+
+.third{
+    color:  rgb(8, 4, 63);
+    position: relative;
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+.third #env{
+    position: absolute;
+    left: 110px;
+    top: 23px;
+    font-size: 1.5em;
+}
+.third .email{
+    position: absolute;
+    left: 150px;
+    top: 10px;
+}

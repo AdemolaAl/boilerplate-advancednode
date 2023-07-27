@@ -1,5 +1,6 @@
 // Do not change this file
-require('dotenv').config();
+const dotenv = require("dotenv");
+dotenv.config({ path: "sample.env" });
 const { MongoClient } = require('mongodb');
 
 async function main(callback) {

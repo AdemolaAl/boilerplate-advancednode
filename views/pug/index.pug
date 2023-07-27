@@ -1,48 +1,71 @@
-html
-  head
-    title FCC Advanced Node and Express
-    meta(name='description', content='Home page')
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='/public/style.css')
-  body
-    h1.border.center FCC Advanced Node and Express
-    h2.center#pug-success-message
-    | Looks like this page is being rendered from Pug into HTML!
-    | #{title}
-    p#pug-variable=message
-    
-    
-    
-    if showLogin
-      hr
-      h2.center Login Form
-      form(action='/login', method='post').center
-        div
-          label Username:
-          input(type='text', name='username')
-        div
-          label Password:
-          input(type='password', name='password')
-        div
-          input(type='submit', value='Log In')
-          
-    if showRegistration
-      hr
-      h2.center Registration Form
-      form(action='/register', method='post').center
-        div
-          label Username:
-          input(type='text', name='username')
-        div
-          label Password:
-          input(type='password', name='password')
-        div
-          input(type='submit', value='Register')
+doctype html
+head
+  link(rel='stylesheet' href='public/style.css')
+.top
+  div
+    p Adem
+  a(href='' style='float: left; margin-left:20px; margin-right: 20px;') Home
+  a(href='#thirdpage' style='float: left; margin-left:20px; margin-right: 20px;') About
+  a(href='#home' style='float: left; margin-left:20px; margin-right: 20px;') Packages
+  a(href='#secondpage' style='float: left; margin-left:20px; margin-right: 20px;') Join
+  a(href='/signin' style='float: right; margin-left:20px; margin-right: 50px;') Sign in
+  button.b(style='float: right; width:110px; ')
+    a(href='/register' style='color:white;') Sign up
+#home.firstpage
+  
+  h1(style='font-size: 50px; ')
+    | Gorgeous Websites
+    br
+    |  designed for you.
+  p#c(style='top:300px')
+    | With Us anyone can create their dream 
+    br
+    |website designs, web graphics and more that
+    br
+    | your business, organization or portfolio needs.
+  button#a
+    a(href='/register' style='color:white;') Register
+  button.b 
+    a(href='/signin' style='color:white;') Sign in
+  img(src='Pictures/image2.jpg' style='position:absolute;width: 540px;;height: 520px; top:80px;\
+        left: 620px;')
 
-    if showSocialAuth
-      hr
-      h2.center Social Login
-      .login.center
+#secondpage.secondpage
+  p.a Go wherever your imagination takes you.
+  .grid
+    .first
+      img(src='./Pictures/mikaela-shannon-clN6N30q3sw-unsplash.jpg')
+      p
+        b Turn your imagination into reality
+        br
+        | With Adem you can create the website of your dreams from as low as $10.We help the community join the web by creating simple poftfolio for people and community.
+    .second
+      img(src="Pictures/pex.jpg")
+      p
+        b Create the unexpected
+        br
+        | Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam laborum magnam repellat quaerat illum placeat aperiam dolores voluptas earum expedita adipisci odio nostrum dolor esse id, consequatur architecto? Odio, tempora.
+    .third
+      img(src='Pictures/pexels-meta-dizayn-1058100.jpg')
+      p
+        b All kind of fun at your fingertips.
+        br
+        | Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam laborum magnam repellat quaerat illum placeat aperiam dolores voluptas earum expedita adipisci odio nostrum dolor esse id, consequatur architecto? Odio, tempora.
+#thirdpage.firstpage(style='background-color: #e8f7fc')
+  h1(style='color: rgb(56, 56, 56);')
+    | Design incredible online
+    br
+    | store for your business.
+  p#c(style='color: rgb(56, 56, 56); width: 400px;')
+    | Adem have a specific plan for small business
+    | with low budget. Adem help's you create a wonderful online store to sell your product and gain more traffic to your business.
+    | Try it out today
+  button.b(style='left: 100px; top: 420px;') Free trial
+  img(src='Pictures/image1.jpg' style='position:absolute;width: 640px;;height: 360px;; top: 130px;\
+  left: 660px;')
+
+.login.center
         a(href='/auth/github').text Login with Github!
+
+.login.center
+        a(href='/auth/google').text Login with Google!
