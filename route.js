@@ -389,7 +389,6 @@ module.exports = function (app, userDB, DB, productDB
   app.route('/productpage/:shortId').get((req, res, next) => {
     const { shortId } = req.params;
 
-
       // Value not found in cache, fetch it from the database
       productDB.findOne({ shortId }, (err, work) => {
         if (err) {
