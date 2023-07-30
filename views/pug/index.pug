@@ -8,16 +8,7 @@ html(lang='en')
     script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
 
   body
-    if flash.error
-        .popup-cvr
-          .popup(style='background-color:#E9D502')
-            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
-            p #{flash.error}
-    if flash.success
-        .popup-cvr
-          .popup
-            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
-            p #{flash.success}
+    
     .header-dark
       .header-cvr
         .name
