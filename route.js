@@ -389,15 +389,6 @@ module.exports = function (app, userDB, DB, productDB
   app.route('/productpage/:shortId').get((req, res, next) => {
     const { shortId } = req.params;
 
-    const cacheKey = `productCache_${shortId}`;
-
-    // Try to get the value from the cache
-    memcached.get(cacheKey, (err, cachedData) => {
-      if (!err && cachedData) {
-        // Value found in cache, use it
-        const { work, singleProduct } = cachedData;
-        return res.render('productpage', { item: work, username: shuffleArray(singleProduct) });
-      }
 
       // Value not found in cache, fetch it from the database
       productDB.findOne({ shortId }, (err, work) => {
@@ -405,18 +396,10 @@ module.exports = function (app, userDB, DB, productDB
           return next(err);
         }
 
-        productDB.find({ tag: 'product' }).toArray((err, singleProduct) => {
+        productDB.find({ }).toArray((err, singleProduct) => {
           if (err) {
             return next(err);
           }
-
-          // Cache the query result
-          const dataToCache = { work, singleProduct };
-          memcached.set(cacheKey, dataToCache, 3600, (err) => {
-            if (err) {
-              console.error('Error caching data:', err);
-            }
-          });
 
           // Set the caching headers
           res.setHeader('Cache-Control', 'public, max-age=3600');
@@ -425,7 +408,6 @@ module.exports = function (app, userDB, DB, productDB
           res.render('productpage', { item: work, username: shuffleArray(singleProduct) });
         });
       });
-    });
   });
 
   app.get('/name/:shortId', (req, res) => {
