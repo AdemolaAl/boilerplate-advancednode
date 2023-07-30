@@ -1,46 +1,38 @@
-doctype html
 html(lang='en')
   head
     meta(charset='UTF-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    link(rel='stylesheet', href='/public/signin.css')
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Poppins')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title Sign In
+    title Register
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
+    link(rel='stylesheet', href='public/register1.css')
   body
-    if flash.error
-        .popup-cvr
-          .popup(style='background-color:red')
-            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
-            p #{flash.error}
+  
     if flash.success
-        .popup-cvr
-          .popup
-            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
-            p #{flash.success}
-    header
-      | ID.me
+      .popup-cvr
+        .popup
+          div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+          p #{flash.success}
+    else if flash.error
+      .popup-cvr
+        .popup(style='background-color:red')
+          div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+          p #{flash.error}
 
-    form(action='/login', method='post')
-      .main
-        .sign
-          p Sign in  to ID.me
-        .new
-          p New to ID.me?
-          a(href='/register') Create an ID.me account
-        p.email Email
-        input.email-ipt(type='name', placeholder='Enter your email address', name='email')
-        p.email Password
-        input.email-ipt(type='password', placeholder='Enter password', name='password')
-        input.sgn-btn(type='submit', value='Sign In')
-        br
-        .forg
-          a(href='') Forget password
-          p OR
-        button.view-btn View more options
-    .last
-      div What is ID.me?
-      div Terms and services
-      div(style='border-right: none;') Privacy Policy
+    .body
+      p.header2(style='padding-top: 80px;') Signin to Revolution
+      form(action='/login', method='post')
+        .main
+            .input-main
+                p Email
+                input(type='email', name='email')
+            .input-main
+                p Password
+                input(type='password', name='password')
 
-    script(src="/public/signin.js") 
+            button(style='width: 100%;') Continue
+            p(style='text-align: center; margin: 30px 0;') Or continue with
+            button(style='background-color: white; color: black; width: 100%; border: 1px solid rgb(136, 136, 136);') Google
+      p
+        | Not a member?
+        a(href='/register-step1')  Sign up
+    script(src="/public/signin.js")     

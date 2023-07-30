@@ -5,6 +5,7 @@ html(lang='en')
     title Profile
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
     link(rel='stylesheet', href='/public/profile.css')
+    script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
   body
     .body
       if flash.success
@@ -30,10 +31,27 @@ html(lang='en')
           else 
             .image
           p.header1 #{user.username}
-          
+      .mobile-header
+        .header-cvr
+          a(href="/") 
+            .name Revolution
+          .cvr1 
+            a(href="/profile") 
+              i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
+            a(href="/shoppingcart")   
+              i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
+            i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
+
+      .slidein
+        <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
+        .slideincvr
+          .div(onclick='handleprofile(this)') Profile
+          .div(onclick='handlebilling(this)') Billing
+          .div(onclick='handleorder(this)') Order History   
+
       .second
         #profile.second-display
-          .cvr(style='border-top: unset;')
+          .cvr(style='border-top: unset; padding-top:30px')
             .first1
               .header1 Personal Information
               .text Use a permanent address where you can receive mail.
@@ -54,16 +72,16 @@ html(lang='en')
                 .two-input
                   .input-main
                     p First name
-                    input(type='text', name='firstname')
+                    input(type='text', name='firstname', value= user.firstname)
                   .input-main
                     p Last name
-                    input(type='text', name='lastname')
+                    input(type='text', name='lastname', value=user.lastname)
                 .input-main
                   p Email address
-                  input(type='text', name='email')
+                  input(type='text', name='email' value=user.email)
                 .input-main
                   p Username
-                  input(type='text', name='username')
+                  input(type='text', name='username', value=user.username)
                 input.button(type="submit", value="Save")
           .cvr
             .first1
@@ -96,10 +114,11 @@ html(lang='en')
               .text
                 | No longer want to use our service? You can delete your account here. This action is not reversible. All information related to this account will be deleted permanently.
             .second2
-              button(style='font-size: 18px; background-color: #EF4444; margin-top: 20px;') Yes, delete my account
+              form(action="/deleteaccount", method="post") 
+                button(style='font-size: 18px; background-color: #EF4444; margin-top: 20px;') Yes, delete my account
 
         #billing.second-display
-          .cvr(style='border-top: unset;')
+          .cvr(style='border-top: unset;  padding-top:30px')
             .first1
               .header1 Update Billing Address
               .text Update the billing address associated with your account.

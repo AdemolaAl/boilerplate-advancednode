@@ -5,6 +5,8 @@ html(lang='en')
     title Document
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
     link(rel='stylesheet', href='/public/shoppingcart.css')
+    script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
+
      
   body
     .header
@@ -17,6 +19,48 @@ html(lang='en')
         .third
           ul Search
           ul Help
+    
+    .mobile-header
+      .header-cvr
+        a(href="/") 
+          .name Revolution
+        .cvr1 
+          a(href="/profile") 
+            i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
+          a(href="/shoppingcart")   
+            i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
+          i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
+    
+    .slidein
+      <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
+      .slideincvr
+        .cvr(onclick=`window.location.href='/product/Men'`)
+          a Men
+          i.fa-solid.fa-angle-right 
+        .cvr(onclick=`window.location.href='/product/women'`)
+          a Women
+          i.fa-solid.fa-angle-right 
+        .cvr(onclick=`window.location.href='/'`)
+          a Plain
+          i.fa-solid.fa-angle-right
+          
+      if user
+        .slideincvr2.slideincvr
+          <i class="fa-solid fa-user" style='margin-right:20px'></i>
+          a(href='/profile') Profile
+          br
+          i.fa-solid.fa-bag-shopping(style='margin-right:20px')
+          a(href='/shoppingcart') Cart
+        
+      else 
+        p.bold-text(style='margin-top:80px; font-size:20px') Join us to get access to ultimate product at very good prices, join and witness the Revolution
+        .cvr2(style='display:flex; align-items: baseline')
+          a(href="/register-step1") 
+            button(style='color: #4F46E5; margin-right:10px; background-color:white; border:1px solid #4F46E5') Join Us    
+          a(href="/signin") 
+            button(style='color: white;') Sign in      
+  
+    
     .main
       p.header2(style='font-size: 30px; margin-top: 0;') Shopping Cart
       .flex
@@ -48,20 +92,21 @@ html(lang='en')
             p.header2 Order total
             p.header1 $112.32
           button checkout
+
     .favourite
       .header2 Customers also purchased
-        .products
-            each product in products
-                .product(onclick=`window.location.href='/productpage/${product.shortId}'` style='cursor:pointer')
-                    .top(style=`\
-                    background: url('/images/${product.shortId}');\
-                    background-position:center;\
-                    background-size: contain;`)
-                    .bottom
-                        .texts
-                            .first #{product.name}
-                            .fourth #{product.price}
-        
+      .products
+        each item in products
+          .product(onclick=`window.location.href='/productpage/${item.shortId}'` style='cursor:pointer')
+            .top(style=`\
+            background: url('/images/${item.shortId}');\
+            background-position:center;\
+            background-size: contain;`)
+            .bottom
+              .texts
+                .first #{item.name}
+                .fourth #{item.price}
+
     .footer
       .footer1
         .span1

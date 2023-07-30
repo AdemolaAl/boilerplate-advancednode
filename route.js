@@ -21,7 +21,6 @@ module.exports = function (app, userDB, DB, productDB
   // After connecting to MongoDB
   const bucket = new GridFSBucket(DB);
   
-  
 
 
   app.route('/').get((req, res,) => {
@@ -55,17 +54,43 @@ module.exports = function (app, userDB, DB, productDB
 
   app.route('/product/:cat').get((req, res) => {
 
-    let { cat } = req.params
-
-    productDB.find({ productType: cat }).toArray((err, use) => {
-      if (err) {
-        next(err);
-      } else {
-        res.render('product', { username: use });
-      }
-    });
+    let { cat } = req.params;
+    if (cat == 'new') {
+      productDB.find({}).toArray((err, use) => {
+        if (err) {
+          next(err);
+          req.flash('error', 'Category not found')
+          res.redirect('/')
+        } else {
+          res.render('product', { username: use, cat:'new arrival' });
+        }
+      });
+    }
+    else {
+      productDB.find({ productType: cat }).toArray((err, use) => {
+        if (err) {
+          next(err);
+          req.flash('error', 'Category not found')
+          res.redirect('/')
+        } else {
+          res.render('product', { username: use, cat });
+        }
+      });
+    }
   });
 
+  app.post('/deleteaccount', async (req,res)=>{
+    await userDB.deleteOne({shortId:req.user.shortId}, (err)=>{
+      if(err){
+        req.flash('error', 'Error deleting account');
+        return res.redirect('/profile');
+      }
+    })
+
+    req.flash('success', 'Account deleted');
+    return res.redirect('/');
+    
+  })
 
   const upload = multer({ dest: 'uploads/' });
 
@@ -239,7 +264,7 @@ module.exports = function (app, userDB, DB, productDB
   
 
   app.get('/profile',ensureAuthenticated,(req, res)=>{
-    res.render('profile', {user:req.user, flash: req.flash() })
+    res.render('profile', {user:req.user, flash: req.flash(), user: req.user })
   })
 
 
@@ -349,7 +374,7 @@ module.exports = function (app, userDB, DB, productDB
     }
   });
   
-  
+
   
 
 
@@ -532,8 +557,8 @@ module.exports = function (app, userDB, DB, productDB
     res.render('register-step4', { data: registrationData });
   });
   
-  app.post('/register3', (req, res) => {
-    userDB.insertOne(
+  app.post('/register3', async (req, res, next) => {
+    await userDB.insertOne(
       {
         username: req.body.username,
         email: req.session.registrationData.email,
@@ -548,13 +573,16 @@ module.exports = function (app, userDB, DB, productDB
           console.log('Error inserting user:', err);
           req.flash('error', 'Error registering user. Please try again.');
         } else {
-          console.log('User registered successfully');
-          req.flash('success', 'Registration successful.');
+          console.log('User registered successfully')
         }
-        res.redirect('/register-step1');
       }
     );
     delete req.session.registrationData;
+    next()
+
+  }, passport.authenticate('local', { failureRedirect: '/' }),
+  (req, res, next) => {
+    res.redirect('/profile');
   });
   
 

@@ -31,8 +31,12 @@ button {
   cursor: pointer;
 }
 
-.bold-text, .header .header-cvr .name {
+.bold-text, .header .header-cvr .name, .name {
   font-weight: bold;
+}
+
+.name {
+  font-size: 20px;
 }
 
 .star-rating {
@@ -77,7 +81,8 @@ button {
 }
 .home1 .img {
   width: 54%;
-  height: 120vh;
+  height: 700px;
+  max-height: 120vh;
   border-radius: 10px;
   margin-right: 30px;
 }
@@ -96,7 +101,7 @@ button {
   margin-bottom: 30px;
 }
 .home1 .second .review .star-rating {
-  margin-left: 10px;
+  margin-left: 0px;
 }
 .home1 .second .review .star-rating .star {
   width: 20px;
@@ -145,9 +150,15 @@ button {
   color: white;
   font-size: 18px;
 }
+.home1 .second1 {
+  display: none;
+}
 
 .recent-reviews {
   padding: 30px;
+}
+.recent-reviews .header2 {
+  margin: 100px 0 30px 0;
 }
 .recent-reviews .review {
   display: flex;
@@ -204,6 +215,7 @@ button {
 .footer .footer1 {
   margin-bottom: 200px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
 }
@@ -243,4 +255,165 @@ button {
 
 #colorform, #textform {
   display: none;
+}
+
+.mobile-header, .slidein {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-header {
+    display: block;
+    padding: 15px 30px 15px 30px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    background-color: white;
+  }
+  .mobile-header a {
+    text-decoration: none;
+    color: unset;
+  }
+  .mobile-header .header-cvr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-header .header-cvr .cvr1 {
+    display: flex;
+  }
+  button {
+    font-family: "Montserrat";
+    cursor: pointer;
+    padding: 7px 8px;
+    border: none;
+    border-radius: 7px;
+    background-color: #4F46E5;
+    color: black;
+    font-size: 15px;
+  }
+  .slidein {
+    display: block;
+    width: 70%;
+    z-index: 40;
+    background-color: white;
+    transition: 0.5s;
+    position: fixed;
+    right: -100%;
+    height: 100vh;
+    top: 0;
+    padding: 30px;
+  }
+  .slidein .fa-solid.fa-xmark.fa-xl {
+    float: right;
+  }
+  .slidein a {
+    color: black;
+  }
+  .slidein .slideincvr {
+    margin-top: 50px;
+    display: block;
+    line-height: 50px;
+    font-size: 20px;
+  }
+  .slidein .cvr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .slidein .cvr a {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .header {
+    display: none;
+  }
+  .desktop {
+    display: none;
+  }
+  .home1 {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .home1 .img {
+    width: 100%;
+    height: 450px;
+    margin-right: unset;
+  }
+  .home1 .second {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .home1 .second .top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .home1 .second .sizez .size-brick-cvr {
+    justify-content: space-between;
+  }
+  .home1 .second .sizez .size-brick {
+    width: 60px;
+    font-size: 18px;
+    height: 40px;
+    margin: 0 5px 10px 0;
+  }
+  .home1 .second .button, .home1 .second .sgn-btn {
+    margin: 20px 0;
+    padding: 15px 0;
+    font-size: 15px;
+  }
+  .home1 .second1 {
+    display: block;
+  }
+  .recent-reviews {
+    padding: 20px;
+  }
+  .recent-reviews .header2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .favourite {
+    margin-top: 30px;
+    padding: 30px 20px;
+  }
+  .favourite .products {
+    justify-content: space-between;
+  }
+  .favourite .product {
+    cursor: pointer;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 150px;
+  }
+  .favourite .product .top {
+    height: 171.4px;
+    border-radius: 10px;
+  }
+  .favourite .product .bottom .texts {
+    padding: 20px 0;
+    font-size: 10px;
+  }
+  .footer {
+    padding: 50px 20px 10px 20px;
+    margin-top: 20px;
+  }
+  .footer h1 {
+    font-size: 30px;
+  }
+  .footer .email {
+    font-size: 15px;
+    width: 60%;
+  }
+  .footer form {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .footer button {
+    font-size: 15px;
+    width: 38%;
+  }
 }/*# sourceMappingURL=productpage.css.map */

@@ -5,6 +5,7 @@ html(lang='en')
     title #{item.name}
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
     link(rel='stylesheet', href='/public/productpage.css')
+    script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
   body
     .header
       .header-cvr
@@ -16,20 +17,75 @@ html(lang='en')
         .third
           ul Search
           ul Help
+    
+    .mobile-header
+      .header-cvr
+        a(href="/") 
+          .name Revolution
+        .cvr1 
+          a(href="/profile") 
+            i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
+          a(href="/shoppingcart")   
+            i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
+          i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
+    
+    .slidein
+      <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
+      .slideincvr
+        .cvr(onclick=`window.location.href='/product/Men'`)
+          a Men
+          i.fa-solid.fa-angle-right 
+        .cvr(onclick=`window.location.href='/product/women'`)
+          a Women
+          i.fa-solid.fa-angle-right 
+        .cvr(onclick=`window.location.href='/'`)
+          a Plain
+          i.fa-solid.fa-angle-right
+          
+      if user
+        .slideincvr2.slideincvr
+          <i class="fa-solid fa-user" style='margin-right:20px'></i>
+          a(href='/profile') Profile
+          br
+          i.fa-solid.fa-bag-shopping(style='margin-right:20px')
+          a(href='/shoppingcart') Cart
+        
+      else 
+        p.bold-text(style='margin-top:80px; font-size:20px') Join us to get access to ultimate product at very good prices, join and witness the Revolution
+        .cvr2(style='display:flex; align-items: baseline')
+          a(href="/register-step1") 
+            button(style='color: #4F46E5; margin-right:10px; background-color:white; border:1px solid #4F46E5') Join Us    
+          a(href="/signin") 
+            button(style='color: white;') Sign in      
+
     .home1
+        .second.second1
+          .mobile
+            .top
+              p #{item.name}
+              p #{item.price}
+            .review
+              | #{item.rating}
+              .star-rating
+                span.star
+                span.star
+                span.star
+                span.star
+                span.star
         .img(style=`background: url('/images/${item.shortId}'); background-size: cover; background-position: center;"`)
         .second
-          .top
-            p #{item.name}
-            p #{item.price}
-          .review
-            | #{item.rating}
-            .star-rating
-              span.star
-              span.star
-              span.star
-              span.star
-              span.star
+          .desktop
+            .top
+              p #{item.name}
+              p #{item.price}
+            .review
+              | #{item.rating}
+              .star-rating
+                span.star
+                span.star
+                span.star
+                span.star
+                span.star
           form(action=`/addtocart/${item.shortId}`, method='post')    
             .color
               p.header1 Color
@@ -45,6 +101,7 @@ html(lang='en')
                 .size-brick(onclick='handleprofile(this)') s
                 .size-brick(onclick='handleprofile(this)') M
                 .size-brick(onclick='handleprofile(this)') L
+                .size-brick(onclick='handleprofile(this)') xs
                 input#colorform(type="text", name='color')
                 input#textform(type="text", name ="size")
 
@@ -56,7 +113,7 @@ html(lang='en')
               | !{item.description}
 
     .recent-reviews
-      p.header2(style='margin:100px 0 30px 0;') Recent reviews
+      p.header2 Recent reviews
       if item.reviews
         each rev in item.reviews
           .review
@@ -130,4 +187,4 @@ html(lang='en')
           .p2 Contact Us
       hr(style='border:1px solid rgb(224, 224, 224)')
       .des Copyright &copy; 2021 Revolution, Inc.
-    script(src='/public/productpage.js')
+    script(src='/public/productpage.js')  

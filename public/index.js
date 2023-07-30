@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const messagePopup = document.querySelector('.popup');
 
   // Show the popup when the page loads
-// Delayed execution of the function by 2 seconds
-setTimeout(() => {
-  if (document.querySelector('.popup')) {
-    document.querySelector('.popup').style.top = '50px';
-  }
-}, 500); 
+  // Delayed execution of the function by 2 seconds
+  setTimeout(() => {
+    if (document.querySelector('.popup')) {
+      document.querySelector('.popup').style.top = '50px';
+    }
+  }, 500);
 
   // Set the timeout duration in milliseconds (e.g., 5000ms for 5 seconds)
   const timeoutDuration = 3000;
@@ -20,3 +20,17 @@ setTimeout(() => {
   // Hide the popup after the specified timeout duration
   setTimeout(hidePopup, timeoutDuration);
 });
+
+
+function slideout() {
+  document.getElementsByClassName('slidein')[0].style.right = '-100%';
+  window.removeEventListenerEventListener('scroll');
+}
+
+function slidein() {
+  document.getElementsByClassName('slidein')[0].style.right = '0';
+
+  window.addEventListener('scroll', slideout);
+
+
+}

@@ -28,3 +28,16 @@ Array.from(price).forEach(price => {
       console.error('Error:', error);
     });
 });
+
+
+function slideout(){
+  document.getElementsByClassName('slidein')[0].style.right  = '-100%';
+  window.removeEventListener('scroll', slideout);
+}
+
+function slidein(){
+  document.getElementsByClassName('slidein')[0].style.right  = '0';
+
+  window.addEventListener('scroll', slideout);
+
+}

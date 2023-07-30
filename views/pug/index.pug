@@ -5,6 +5,8 @@ html(lang='en')
     title Revolution
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat')
     link(rel='stylesheet', href='public/style.css')
+    script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
+
   body
     if flash.error
         .popup-cvr
@@ -18,10 +20,13 @@ html(lang='en')
             p #{flash.success}
     .header-dark
       .header-cvr
-        .name Revolution
+        .name
+          a(href="/") Revolution
         .second
-          ul(onclick=`window.location.href='/product/Men'`) Men
-          ul(onclick=`window.location.href='/product/women'`) Women
+          ul
+            a(href="/product/Men")  Men
+          ul
+            a(href="/product/women")  Women
           ul Plain
         if user 
           .third1
@@ -43,13 +48,55 @@ html(lang='en')
             ul Search
             ul Help
     
+    .mobile-header
+      .header-cvr
+        a(href="/") 
+          .name Revolution
+        .cvr1 
+          a(href="/profile") 
+            i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
+          a(href="/shoppingcart")   
+            i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
+          i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
+    
+    .slidein
+      <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
+      .slideincvr
+        .cvr(onclick=`window.location.href='/product/Men'`)
+          a Men
+          i.fa-solid.fa-angle-right 
+        .cvr(onclick=`window.location.href='/product/women'`)
+          a Women
+          i.fa-solid.fa-angle-right 
+        .cvr(onclick=`window.location.href='/'`)
+          a Plain
+          i.fa-solid.fa-angle-right
+          
+      if user
+        .slideincvr2.slideincvr
+          <i class="fa-solid fa-user" style='margin-right:20px'></i>
+          a(href='/profile') Profile
+          br
+          i.fa-solid.fa-bag-shopping(style='margin-right:20px')
+          a(href='/shoppingcart') Cart
+        
+      else 
+        p.bold-text(style='margin-top:80px; font-size:20px') Join us to get access to ultimate product at very good prices, join and witness the Revolution
+        .cvr2(style='display:flex; align-items: baseline')
+          a(href="/register-step1") 
+            button(style='color: #4F46E5; margin-right:10px; background-color:white; border:1px solid #4F46E5') Join Us    
+          a(href="/signin") 
+            button(style='color: white;') Sign in      
+
+
     .home(style="background: url('pictures/alexander-andrews-BX4Q0gojWAs-unsplash.jpg'); background-size: cover; background-position: center;")
       .color-cover
         .texts
           h1 New arrivals are here
           p
             | The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they&apos;re still in stock.
-          button Shop New Arrivals
+          a(href="/product/new") 
+            button Shop New Arrivals
 
     .category
       .shop
@@ -81,7 +128,37 @@ html(lang='en')
         background-position: center;")
           .color-over
             .text Sales
-    
+    .category1
+        .shop
+          .p1 Shop by Category
+        .categories
+          .cat1(style="background: url('pictures/bottle.jpg');\
+          background-size: cover;\
+          background-position: center;")
+            .color-over
+              .text New Arrivals
+          .cat1(style="background: url('pictures/watches.jpg');\
+          background-size: cover;\
+          background-position: center;")
+            .color-over
+              .text Productivity
+          .cat1(style="background: url('pictures/camera.jpg');\
+          background-size: cover;\
+          background-position: center;")
+            .color-over
+              .text Workspace
+          .cat1(style="background: url('pictures/bag.jpg');\
+          background-size: cover;\
+          background-position: center;")
+            .color-over
+              .text Assesories
+          .cat1(style="background: url('pictures/products.jpg');\
+          background-size: cover;\
+          background-position: center;")
+            .color-over
+              .text Sales
+        .shop
+          .p2(style='margin-top:20px') Browse all Categories
     .home1(style="background: url('pictures/laptop.jpg');background-size: cover;  background-position: center;")
       .color-cover
         .texts
@@ -100,7 +177,7 @@ html(lang='en')
             .top(style=`\
             background: url('/images/${item.shortId}');\
             background-position:center;\
-            background-size: contain;`)
+            background-size: contain;  `)
             .bottom
               .texts
                 .first #{item.name}

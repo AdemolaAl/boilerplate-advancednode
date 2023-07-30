@@ -1,4 +1,4 @@
-body{
+body {
     font-family: 'Montserrat';
     padding: 0;
     margin: 0;
@@ -8,12 +8,13 @@ body{
     overflow-x: hidden;
 }
 
-.popup-cvr{
+.popup-cvr {
     width: 100%;
     display: flex;
     justify-content: center;
     position: absolute;
 }
+
 .popup {
     background-color: #198754;
     padding: 30px;
@@ -23,9 +24,9 @@ body{
     position: absolute;
     top: -130px;
     z-index: 10;
-    transition:top 1s;
-    
-    
+    transition: top 1s;
+
+
     .close-popup-btn {
         position: absolute;
         top: 5px;
@@ -34,7 +35,7 @@ body{
     }
 }
 
-.body{
+.body {
     display: flex;
     position: relative;
     overflow: hidden;
@@ -42,38 +43,53 @@ body{
     min-width: 100%;
 }
 
-.text{
+.text {
     line-height: 25px;
     font-size: 15px;
 }
-.header1{
+
+.header1 {
     font-size: 15px;
     font-weight: bold;
     margin: 10px 0;
 }
-.header2{
+
+.header2 {
     font-size: 20px;
     font-weight: bold;
 }
-.bold-text{
+
+.bold-text {
     font-weight: bold;
 }
 
-.input-main{
+.name{
+    @extend .bold-text;
+    font-size: 20px;
+}
+
+.input-main {
     width: max-content;
     width: 100%;
     margin: 30px 0;
-    p{margin: 5px 0;}
-    input, textarea{
+
+    p {
+        margin: 5px 0;
+    }
+
+    input,
+    textarea {
         width: 100%;
         border: 1px solid #c0c0c0;
         border-radius: 5px;
         padding: 8px;
         outline-color: #4F46E5;
     }
-    
+
 }
-button, .button{
+
+button,
+.button {
     cursor: pointer;
     padding: 7px 8px;
     border: none;
@@ -83,37 +99,41 @@ button, .button{
     font-size: 15px;
 }
 
-.first{
+.first {
     padding: 30px 20px;
     width: 25%;
     height: 100vh;
     border-right: 1px solid rgb(224, 224, 224);
     position: relative;
-    
-    .name{
+
+    .name {
         @extend .bold-text;
         font-size: 20px;
     }
-    .divs{
+
+    .divs {
         margin-top: 50px;
     }
-    .div{
+
+    .div {
         padding: 10px 10px;
         width: 90%;
         border-radius: 5px;
         margin: 10px 0;
     }
-    .div:hover{
+
+    .div:hover {
         background-color: rgb(224, 224, 224);
     }
 
-    .image-cvr{
+    .image-cvr {
         display: flex;
         align-items: center;
         position: absolute;
         bottom: 80px;
-        margin-left: 20px;  
-        .image{
+        margin-left: 20px;
+
+        .image {
             background: url('/pictures/user.jpg');
             background-position: center;
             background-size: cover;
@@ -125,96 +145,237 @@ button, .button{
     }
 }
 
-.second{
+.second {
     width: 75%;
     overflow-y: scroll;
-    #profile , #billing{
+
+    #profile,
+    #billing {
         display: none;
-        .cvr{
+
+        .cvr {
             padding: 60px;
             border-top: 1px solid rgb(224, 224, 224);
             border-bottom: 1px solid rgb(224, 224, 224);
 
             display: flex;
 
-            .first1{width: 40%;}
+            .first1 {
+                width: 40%;
+            }
 
-            .second2{
+            .second2 {
                 width: 60%;
                 margin-left: 50px;
-                .top{
+
+                .top {
                     width: 100px;
                     height: 120px;
-                    margin: 20px 0;
+                    margin: 20px 20px 20px 0;
                     border-radius: 5px;
                     background-image: url('/pictures/user.jpg');
                     background-size: cover;
                     background-position: center;
                 }
 
-                .two-input{
+                .two-input {
                     display: flex;
                     justify-content: space-between;
-                    .input-main{
+
+                    .input-main {
                         width: 48%;
                         margin: 15px 0;
                     }
                 }
 
-            
+
             }
         }
     }
 
-    #order{
+    #order {
         display: none;
-        .order-cvr, .product{
+
+        .order-cvr,
+        .product {
             padding: 0 30px;
             background-color: rgb(224, 224, 224);
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgb(224, 224, 224);
 
-            ul{
+            ul {
                 display: inline-block;
                 width: 150px;
                 max-width: 150px;
             }
         }
-        .product{
+
+        .product {
             background-color: unset;
         }
-    }  
+    }
 }
 
 
 /* Hide the original file input */
 input[type="file"] {
-display: none;
+    display: none;
 }
-  
+
 /* Style the custom file input label */
 .file-label {
-display: inline-block;
-padding: 10px 20px;
-background-color: #3498db;
-color: #fff;
-cursor: pointer;
-border-radius: 5px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 /* Change label appearance when hovering over it */
 .file-label:hover {
-background-color: #2980b9;
+    background-color: #2980b9;
 }
 
 /* Change label appearance when file is selected */
-input[type="file"]:focus + .file-label {
-outline: 2px solid #3498db;
-outline-offset: -2px;
+input[type="file"]:focus+.file-label {
+    outline: 2px solid #3498db;
+    outline-offset: -2px;
 }
 
 /* Style the selected filename (optional) */
 input[type="file"]::file-selector-button {
-display: none;
+    display: none;
+}
+
+
+.mobile-header {
+    display: none;
+}
+
+.slidein {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    body,
+    .body {
+        overflow: unset;
+    }
+
+    .body {
+        display: block;
+    }
+
+    .mobile-header {
+        display: block;
+        padding: 15px 30px 15px 30px;
+        border-bottom: 1px solid rgb(224, 224, 224);
+        background-color: white;
+        a{text-decoration: none; color: unset;}
+
+        .header-cvr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            .cvr1{
+                display: flex;
+            }
+        }
+    }
+
+    .slidein {
+        display: block;
+        width: 70%;
+        z-index: 40;
+        background-color: white;
+        transition: 0.5s;
+        position: fixed;
+        right: -100%;
+        height: 100vh;
+        top: 0;
+        padding: 20px;
+
+        i{
+            float: right;
+        }
+
+        .div {
+            padding: 4px 10px;
+            width: 90%;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .slideincvr {
+            display: block;
+            line-height: 50px;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+
+
+    }
+    .first {
+        display: none;
+    }
+
+    .second {
+        width: unset;
+
+        #profile,
+        #billing {
+            .cvr {
+                padding: unset;
+                display: block;
+                padding: 100px 20px;
+
+                .first1 {
+                    width: unset;
+                }
+
+                .second2 {
+                    width: unset;
+                    margin-left: unset;
+
+                    .two-input {
+                        display: block;
+
+                        .input-main {
+                            width: unset;
+                            margin: 30px 0;
+                        }
+                    }
+
+
+                }
+            }
+        }
+
+        #order {
+            display: none;
+
+            .order-cvr,
+            .product {
+                padding: 0 30px;
+                background-color: rgb(224, 224, 224);
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid rgb(224, 224, 224);
+
+                ul {
+                    display: inline-block;
+                    width: 150px;
+                    max-width: 150px;
+                }
+            }
+
+            .product {
+                background-color: unset;
+            }
+        }
+    }
 }

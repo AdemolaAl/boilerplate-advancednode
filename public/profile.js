@@ -14,21 +14,24 @@ function clear() {
 
     }
 }
-
+ 
 function handleprofile(item) {
     this.clear();
     document.getElementById('profile').style.display = 'block';
     item.style.backgroundColor = 'rgb(224, 224, 224)';
+    slideout()
 }
 function handlebilling(item) {
     this.clear();
     document.getElementById('billing').style.display = 'block';
     item.style.backgroundColor = 'rgb(224, 224, 224)';
+    slideout()
 }
 function handleorder(item) {
     this.clear();
     document.getElementById('order').style.display = 'block';
     item.style.backgroundColor = 'rgb(224, 224, 224)';
+    slideout()
 }
 
 handleprofile(document.getElementsByClassName('div')[0])
@@ -66,3 +69,16 @@ function hidePopup() {
       fileName.textContent = '';
     }
   }
+
+  function slideout(){
+    document.getElementsByClassName('slidein')[0].style.right  = '-100%';
+    window.removeEventListener('scroll', slideout);
+  }
+  
+  function slidein(){
+    document.getElementsByClassName('slidein')[0].style.right  = '0';
+  
+    window.addEventListener('scroll', slideout);
+  
+  }
+  

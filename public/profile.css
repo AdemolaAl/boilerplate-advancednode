@@ -57,8 +57,12 @@ body {
   font-weight: bold;
 }
 
-.bold-text, .first .name {
+.bold-text, .first .name, .name {
   font-weight: bold;
+}
+
+.name {
+  font-size: 20px;
 }
 
 .input-main {
@@ -70,7 +74,8 @@ body {
 .input-main p {
   margin: 5px 0;
 }
-.input-main input, .input-main textarea {
+.input-main input,
+.input-main textarea {
   width: 100%;
   border: 1px solid #c0c0c0;
   border-radius: 5px;
@@ -78,7 +83,8 @@ body {
   outline-color: #4F46E5;
 }
 
-button, .button {
+button,
+.button {
   cursor: pointer;
   padding: 7px 8px;
   border: none;
@@ -131,50 +137,59 @@ button, .button {
   width: 75%;
   overflow-y: scroll;
 }
-.second #profile, .second #billing {
+.second #profile,
+.second #billing {
   display: none;
 }
-.second #profile .cvr, .second #billing .cvr {
+.second #profile .cvr,
+.second #billing .cvr {
   padding: 60px;
   border-top: 1px solid rgb(224, 224, 224);
   border-bottom: 1px solid rgb(224, 224, 224);
   display: flex;
 }
-.second #profile .cvr .first1, .second #billing .cvr .first1 {
+.second #profile .cvr .first1,
+.second #billing .cvr .first1 {
   width: 40%;
 }
-.second #profile .cvr .second2, .second #billing .cvr .second2 {
+.second #profile .cvr .second2,
+.second #billing .cvr .second2 {
   width: 60%;
   margin-left: 50px;
 }
-.second #profile .cvr .second2 .top, .second #billing .cvr .second2 .top {
+.second #profile .cvr .second2 .top,
+.second #billing .cvr .second2 .top {
   width: 100px;
   height: 120px;
-  margin: 20px 0;
+  margin: 20px 20px 20px 0;
   border-radius: 5px;
   background-image: url("/pictures/user.jpg");
   background-size: cover;
   background-position: center;
 }
-.second #profile .cvr .second2 .two-input, .second #billing .cvr .second2 .two-input {
+.second #profile .cvr .second2 .two-input,
+.second #billing .cvr .second2 .two-input {
   display: flex;
   justify-content: space-between;
 }
-.second #profile .cvr .second2 .two-input .input-main, .second #billing .cvr .second2 .two-input .input-main {
+.second #profile .cvr .second2 .two-input .input-main,
+.second #billing .cvr .second2 .two-input .input-main {
   width: 48%;
   margin: 15px 0;
 }
 .second #order {
   display: none;
 }
-.second #order .order-cvr, .second #order .product {
+.second #order .order-cvr,
+.second #order .product {
   padding: 0 30px;
   background-color: rgb(224, 224, 224);
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgb(224, 224, 224);
 }
-.second #order .order-cvr ul, .second #order .product ul {
+.second #order .order-cvr ul,
+.second #order .product ul {
   display: inline-block;
   width: 150px;
   max-width: 150px;
@@ -212,4 +227,117 @@ input[type=file]:focus + .file-label {
 /* Style the selected filename (optional) */
 input[type=file]::file-selector-button {
   display: none;
+}
+
+.mobile-header {
+  display: none;
+}
+
+.slidein {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  body,
+  .body {
+    overflow: unset;
+  }
+  .body {
+    display: block;
+  }
+  .mobile-header {
+    display: block;
+    padding: 15px 30px 15px 30px;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    background-color: white;
+  }
+  .mobile-header a {
+    text-decoration: none;
+    color: unset;
+  }
+  .mobile-header .header-cvr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-header .header-cvr .cvr1 {
+    display: flex;
+  }
+  .slidein {
+    display: block;
+    width: 70%;
+    z-index: 40;
+    background-color: white;
+    transition: 0.5s;
+    position: fixed;
+    right: -100%;
+    height: 100vh;
+    top: 0;
+    padding: 20px;
+  }
+  .slidein i {
+    float: right;
+  }
+  .slidein .div {
+    padding: 4px 10px;
+    width: 90%;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  .slidein .slideincvr {
+    display: block;
+    line-height: 50px;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+  .first {
+    display: none;
+  }
+  .second {
+    width: unset;
+  }
+  .second #profile .cvr,
+  .second #billing .cvr {
+    padding: unset;
+    display: block;
+    padding: 100px 20px;
+  }
+  .second #profile .cvr .first1,
+  .second #billing .cvr .first1 {
+    width: unset;
+  }
+  .second #profile .cvr .second2,
+  .second #billing .cvr .second2 {
+    width: unset;
+    margin-left: unset;
+  }
+  .second #profile .cvr .second2 .two-input,
+  .second #billing .cvr .second2 .two-input {
+    display: block;
+  }
+  .second #profile .cvr .second2 .two-input .input-main,
+  .second #billing .cvr .second2 .two-input .input-main {
+    width: unset;
+    margin: 30px 0;
+  }
+  .second #order {
+    display: none;
+  }
+  .second #order .order-cvr,
+  .second #order .product {
+    padding: 0 30px;
+    background-color: rgb(224, 224, 224);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(224, 224, 224);
+  }
+  .second #order .order-cvr ul,
+  .second #order .product ul {
+    display: inline-block;
+    width: 150px;
+    max-width: 150px;
+  }
+  .second #order .product {
+    background-color: unset;
+  }
 }/*# sourceMappingURL=profile.css.map */
