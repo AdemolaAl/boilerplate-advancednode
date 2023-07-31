@@ -8,129 +8,101 @@ html(lang='en')
     script(src='https://kit.fontawesome.com/0b68ed503d.js', crossorigin='anonymous')
 
   body
-    if flash.error
-        .popup-cvr
-          .popup(style='background-color:#E9D502')
-            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
-            p #{flash.error}
-    if flash.success
-        .popup-cvr
-          .popup
-            div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
-            p #{flash.success}
-    .header-dark
-      .header-cvr
-        .name
-          a(href="/") Revolution
-        .second
-          ul
-            a(href="/product/Men")  Men
-          ul
-            a(href="/product/women")  Women
-          ul Plain
-        if user 
-          .third1
-            .profile-container
-              if user.fileId
-                .profimg(style=`background-image: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
-              else 
-                .profimg(style=`background-image: url('/pictures/user.jpg'); background-position: center; background-size: cover;`)
+    .main-cvr
+      if flash.error
+          .popup-cvr
+            .popup(style='background-color:#E9D502')
+              div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+              p #{flash.error}
+      if flash.success
+          .popup-cvr
+            .popup
+              div.close-popup-btn(onclick='hidePopup()', style='cursor:pointer') x
+              p #{flash.success}
+      .header-dark
+        .header-cvr
+          .name
+            a(href="/") Revolution
+          .second
+            ul
+              a(href="/product/Men")  Men
+            ul
+              a(href="/product/women")  Women
+            ul Plain
+          if user 
+            .third1
+              .profile-container
+                if user.fileId
+                  .profimg(style=`background-image: url('/images/${user.shortId}'); background-position: center; background-size: cover;`)
+                else 
+                  .profimg(style=`background-image: url('/pictures/user.jpg'); background-position: center; background-size: cover;`)
 
-              .dropdown-menu
-                // Add your dropdown menu content here
-                div(onclick=`window.location.href='/profile'`, style='cursor:pointer') Profile
-                div Billing
-                div Order History
-                div Pending Order
-                // For example, you can add links or other elements
-        else
-          .third
-            ul Search
-            ul Help
-    
-    .mobile-header
-      .header-cvr
-        a(href="/") 
-          .name Revolution
-        .cvr1 
-          a(href="/profile") 
-            i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
-          a(href="/shoppingcart")   
-            i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
-          i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
-    
-    .slidein
-      <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
-      .slideincvr
-        .cvr(onclick=`window.location.href='/product/Men'`)
-          a Men
-          i.fa-solid.fa-angle-right 
-        .cvr(onclick=`window.location.href='/product/women'`)
-          a Women
-          i.fa-solid.fa-angle-right 
-        .cvr(onclick=`window.location.href='/'`)
-          a Plain
-          i.fa-solid.fa-angle-right
+                .dropdown-menu
+                  // Add your dropdown menu content here
+                  div(onclick=`window.location.href='/profile'`, style='cursor:pointer') Profile
+                  div Billing
+                  div Order History
+                  div Pending Order
+                  // For example, you can add links or other elements
+          else
+            .third
+              ul Search
+              ul Help
+      
+      .mobile-header
+        .header-cvr
+          a(href="/") 
+            .name Revolution
+          .cvr1 
+            a(href="/profile") 
+              i.fa-regular.fa-user.fa-lg(style='margin-right: 20px;')
+            a(href="/shoppingcart")   
+              i.fa-solid.fa-bag-shopping.fa-xl(style='margin-right: 20px;')
+            i.fa-solid.fa-bars.fa-xl(onclick='slidein()')
+      
+      .slidein
+        <i class="fa-solid fa-xmark fa-xl" onclick='slideout()'></i>
+        .slideincvr
+          .cvr(onclick=`window.location.href='/product/Men'`)
+            a Men
+            i.fa-solid.fa-angle-right 
+          .cvr(onclick=`window.location.href='/product/women'`)
+            a Women
+            i.fa-solid.fa-angle-right 
+          .cvr(onclick=`window.location.href='/'`)
+            a Plain
+            i.fa-solid.fa-angle-right
+            
+        if user
+          .slideincvr2.slideincvr
+            <i class="fa-solid fa-user" style='margin-right:20px'></i>
+            a(href='/profile') Profile
+            br
+            i.fa-solid.fa-bag-shopping(style='margin-right:20px')
+            a(href='/shoppingcart') Cart
           
-      if user
-        .slideincvr2.slideincvr
-          <i class="fa-solid fa-user" style='margin-right:20px'></i>
-          a(href='/profile') Profile
-          br
-          i.fa-solid.fa-bag-shopping(style='margin-right:20px')
-          a(href='/shoppingcart') Cart
-        
-      else 
-        p.bold-text(style='margin-top:80px; font-size:20px') Join us to get access to ultimate product at very good prices, join and witness the Revolution
-        .cvr2(style='display:flex; align-items: baseline')
-          a(href="/register-step1") 
-            button(style='color: #4F46E5; margin-right:10px; background-color:white; border:1px solid #4F46E5') Join Us    
-          a(href="/signin") 
-            button(style='color: white;') Sign in      
+        else 
+          p.bold-text(style='margin-top:80px; font-size:20px') Join us to get access to ultimate product at very good prices, join and witness the Revolution
+          .cvr2(style='display:flex; align-items: baseline')
+            a(href="/register-step1") 
+              button(style='color: #4F46E5; margin-right:10px; background-color:white; border:1px solid #4F46E5') Join Us    
+            a(href="/signin") 
+              button(style='color: white;') Sign in      
 
 
-    .home(style="background: url('https://img.freepik.com/free-photo/boots-footwear-white-fashion-classic_1172-291.jpg?size=626&ext=jpg&ga=GA1.1.1490266739.1687190353&semt=ais'); background-size: cover; background-position: center;")
-      .color-cover
-        .texts
-          h1 New arrivals are here
-          p
-            | The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they&apos;re still in stock.
-          a(href="/product/new") 
-            button Shop New Arrivals
+      .home(style="background: url('https://img.freepik.com/free-photo/boots-footwear-white-fashion-classic_1172-291.jpg?size=626&ext=jpg&ga=GA1.1.1490266739.1687190353&semt=ais'); background-size: cover; background-position: center;")
+        .color-cover
+          .texts
+            h1 New arrivals are here
+            p
+              | The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they&apos;re still in stock.
+            a(href="/product/new") 
+              button Shop New Arrivals
 
-    .category
-      .shop
-        .p1 Shop by Category
-        .p2 Browse all Categories
-      .categories
-        .cat1(style="background: url('pictures/bottle.jpg');\
-        background-size: cover;\
-        background-position: center;")
-          .color-over
-            .text New Arrivals
-        .cat1(style="background: url('pictures/watches.jpg');\
-        background-size: cover;\
-        background-position: center;")
-          .color-over
-            .text Productivity
-        .cat1(style="background: url('pictures/camera.jpg');\
-        background-size: cover;\
-        background-position: center;")
-          .color-over
-            .text Workspace
-        .cat1(style="background: url('pictures/bag.jpg');\
-        background-size: cover;\
-        background-position: center;")
-          .color-over
-            .text Assesories
-        .cat1(style="background: url('pictures/products.jpg');\
-        background-size: cover;\
-        background-position: center;")
-          .color-over
-            .text Sales
-    .category1
+      .category
         .shop
           .p1 Shop by Category
+          .p2 Browse all Categories
         .categories
           .cat1(style="background: url('pictures/bottle.jpg');\
           background-size: cover;\
@@ -157,78 +129,107 @@ html(lang='en')
           background-position: center;")
             .color-over
               .text Sales
+      .category1
+          .shop
+            .p1 Shop by Category
+          .categories
+            .cat1(style="background: url('pictures/bottle.jpg');\
+            background-size: cover;\
+            background-position: center;")
+              .color-over
+                .text New Arrivals
+            .cat1(style="background: url('pictures/watches.jpg');\
+            background-size: cover;\
+            background-position: center;")
+              .color-over
+                .text Productivity
+            .cat1(style="background: url('pictures/camera.jpg');\
+            background-size: cover;\
+            background-position: center;")
+              .color-over
+                .text Workspace
+            .cat1(style="background: url('pictures/bag.jpg');\
+            background-size: cover;\
+            background-position: center;")
+              .color-over
+                .text Assesories
+            .cat1(style="background: url('pictures/products.jpg');\
+            background-size: cover;\
+            background-position: center;")
+              .color-over
+                .text Sales
+          .shop
+            .p2(style='margin-top:20px') Browse all Categories
+      .home1(style="background: url('https://img.freepik.com/free-photo/closeup-shot-male-tying-his-shoes-getting-ready-business-meeting_181624-15586.jpg?size=626&ext=jpg&ga=GA1.1.1490266739.1687190353&semt=sph');background-size: cover;  background-position: center;")
+        .color-cover
+          .texts
+            h1 Level up your desk
+            p
+              | Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.
+            button Shop Workspace
+      
+      .favourite
         .shop
-          .p2(style='margin-top:20px') Browse all Categories
-    .home1(style="background: url('pictures/laptop.jpg');background-size: cover;  background-position: center;")
-      .color-cover
-        .texts
-          h1 Level up your desk
-          p
-            | Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.
-          button Shop Workspace
-    
-    .favourite
-      .shop
-        .p1 Our Favorites
-        .p2 Browse all Favorites
-      .products
-        each item in HomePageProductsSliced
-          .product(onclick=`window.location.href='/productpage/${item.shortId}'`)
-            .top(style=`\
-            background: url('/images/${item.shortId}');\
-            background-position:center;\
-            background-size: contain;  `)
-            .bottom
-              .texts
-                .first #{item.name}
-                .fourth #{item.price}
-    
-    .home1(style="background: url('pictures/watches1.jpg');  background-size: cover; background-position: center;")
-      .color-cover
-        .texts
-          h1 Simple productivity
-          p
-            | Endless tasks, limited hours, a single piece of paper. Not really a haiku, but we&apos;re doing our best here. No kanban boards, burndown charts, or tangled flowcharts with our Focus system. Just the undeniable urge to fill empty circles.
-          button Shop Focus
-    
-    .footer
-      .footer1
-        .span1
-          .logo(style='margin-left: 0; margin-bottom: 20px;')
-            h1 Revolution
-          .p1 Subscribe to our newsletter
-          .p2(style='margin-bottom: 10px;') Follow our newsletter to stay updated about us.
-          form(action='/subscribe', method='POST')
-            input.email(type='email', name='email', placeholder='Enter your email', required='')
-            button(type='submit') Subscribe
-        .span
-          p.p1 Quick Links
-          .p2 Home
-          .p2 About Us
-          .p2 Features
-          .p2 Pricing
-          .p2 Contact Us
-        .span
-          p.p1 Quick Links
-          .p2 Home
-          .p2 About Us
-          .p2 Features
-          .p2 Pricing
-          .p2 Contact Us
-        .span
-          p.p1 Quick Links
-          .p2 Home
-          .p2 About Us
-          .p2 Features
-          .p2 Pricing
-          .p2 Contact Us
-        .span
-          p.p1 Quick Links
-          .p2 Home
-          .p2 About Us
-          .p2 Features
-          .p2 Pricing
-          .p2 Contact Us
-      hr(style='border:1px solid rgb(44, 45, 54);')
-      .des Copyright &copy; 2021 Revolution, Inc.
+          .p1 Our Favorites
+          .p2 Browse all Favorites
+        .products
+          each item in HomePageProductsSliced
+            .product(onclick=`window.location.href='/productpage/${item.shortId}'`)
+              .top(style=`\
+              background: url('/images/${item.shortId}');\
+              background-position:center;\
+              background-size: contain;  `)
+              .bottom
+                .texts
+                  .first #{item.name}
+                  .fourth #{item.price}
+      
+      .home1(style="background: url('pictures/watches1.jpg');  background-size: cover; background-position: center;")
+        .color-cover
+          .texts
+            h1 Simple productivity
+            p
+              | Endless tasks, limited hours, a single piece of paper. Not really a haiku, but we&apos;re doing our best here. No kanban boards, burndown charts, or tangled flowcharts with our Focus system. Just the undeniable urge to fill empty circles.
+            button Shop Focus
+      
+      .footer
+        .footer1
+          .span1
+            .logo(style='margin-left: 0; margin-bottom: 20px;')
+              h1 Revolution
+            .p1 Subscribe to our newsletter
+            .p2(style='margin-bottom: 10px;') Follow our newsletter to stay updated about us.
+            form(action='/subscribe', method='POST')
+              input.email(type='email', name='email', placeholder='Enter your email', required='')
+              button(type='submit') Subscribe
+          .span
+            p.p1 Quick Links
+            .p2 Home
+            .p2 About Us
+            .p2 Features
+            .p2 Pricing
+            .p2 Contact Us
+          .span
+            p.p1 Quick Links
+            .p2 Home
+            .p2 About Us
+            .p2 Features
+            .p2 Pricing
+            .p2 Contact Us
+          .span
+            p.p1 Quick Links
+            .p2 Home
+            .p2 About Us
+            .p2 Features
+            .p2 Pricing
+            .p2 Contact Us
+          .span
+            p.p1 Quick Links
+            .p2 Home
+            .p2 About Us
+            .p2 Features
+            .p2 Pricing
+            .p2 Contact Us
+        hr(style='border:1px solid rgb(44, 45, 54);')
+        .des Copyright &copy; 2021 Revolution, Inc.
     script(src='public/index.js')
