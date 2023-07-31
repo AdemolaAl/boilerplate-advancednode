@@ -222,7 +222,7 @@ module.exports = function (app, userDB, DB, productDB
         const downloadStream = bucket.openDownloadStream(fileId);
   
         // Set the appropriate content type
-        res.contentType('image/png');
+        res.contentType('image/webP');
         res.setHeader('Cache-Control', 'public, max-age=3600');
         res.setHeader('Expires', new Date(Date.now() + 3600000).toUTCString());
   
@@ -247,7 +247,7 @@ module.exports = function (app, userDB, DB, productDB
           const downloadStream = bucket.openDownloadStream(fileId);
   
           // Set the appropriate content type
-          res.contentType('image/png');
+          res.contentType('image/webP');
   
           // Pipe the GridFS download stream to the response
           downloadStream.pipe(res)
@@ -566,9 +566,6 @@ module.exports = function (app, userDB, DB, productDB
     res.redirect('/profile');
   });
   
-
-
-
 
   app.route('/login').post((req, res, next) => {
     passport.authenticate('local', {
