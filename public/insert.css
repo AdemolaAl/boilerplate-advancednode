@@ -34,4 +34,10 @@ form .cvr input, form .cvr textarea {
   border-radius: 5px;
   padding: 8px;
   outline-color: #4F46E5;
+}
+
+@media screen and (max-width: 768px) {
+  form {
+    width: 90%;
+  }
 }/*# sourceMappingURL=insert.css.map */
